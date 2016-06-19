@@ -17,6 +17,6 @@ export async function create (req, res, next) {
     let newUser = await User.create({ name: { first, last }, email, password, isAdmin })
     res.send(newUser)
   } catch (err) {
-    res.sendStatus(500)
+    res.send(err)
   }
 }

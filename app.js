@@ -3,19 +3,22 @@ import path from 'path'
 import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
-// import multer from 'multer'
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+// import multer from 'multer'
 // import favicon from 'serve-favicon'
-require('dotenv').config()
+
+// load environment variables
+dotenv.config()
 
 mongoose.Promise = global.Promise
 mongoose.connect(process.env.MONGO_URI)
 
-require('./models')
-var routes = require('./routes/index')
-var users = require('./routes/users')
+import './models'
+import routes from './routes/index'
+import api from './routes/api'
 
-var app = express()
+const app = express()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -30,10 +33,10 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', routes)
-app.use('/users', users)
+app.use('/api/v1', api)
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   var err = new Error('Not Found')
   err.status = 404
   next(err)
@@ -44,7 +47,7 @@ app.use(function (req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function (err, req, res, next) {
+  app.use((err, req, res, next) => {
     res.status(err.status || 500)
     res.render('error', {
       message: err.message,
@@ -55,7 +58,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   res.status(err.status || 500)
   res.render('error', {
     message: err.message,
@@ -63,4 +66,4 @@ app.use(function (err, req, res, next) {
   })
 })
 
-module.exports = app
+export default app

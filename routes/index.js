@@ -1,13 +1,14 @@
-var express = require('express')
-var router = express.Router()
-import * as user from './api/user'
+import express from 'express'
+import oauth2 from './oauth2'
+
+const router = express.Router()
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' })
 })
 
-router.get('/api/v1/users', user.list)
-router.post('/api/v1/users', user.create)
+router.post('/oauth/token', oauth2.token)
+router.use('/api', oauth2.restrict)
 
-module.exports = router
+export default router
