@@ -706,6 +706,11 @@
       "from": "core-util-is@>=1.0.0 <1.1.0",
       "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz"
     },
+    "crc": {
+      "version": "3.4.0",
+      "from": "crc@3.4.0",
+      "resolved": "https://registry.npmjs.org/crc/-/crc-3.4.0.tgz"
+    },
     "css": {
       "version": "1.0.8",
       "from": "css@>=1.0.8 <1.1.0",
@@ -1001,6 +1006,23 @@
           "version": "0.1.5",
           "from": "cookie@0.1.5",
           "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.1.5.tgz"
+        },
+        "depd": {
+          "version": "1.1.0",
+          "from": "depd@>=1.1.0 <1.2.0",
+          "resolved": "https://registry.npmjs.org/depd/-/depd-1.1.0.tgz"
+        }
+      }
+    },
+    "express-session": {
+      "version": "1.13.0",
+      "from": "express-session@latest",
+      "resolved": "https://registry.npmjs.org/express-session/-/express-session-1.13.0.tgz",
+      "dependencies": {
+        "cookie": {
+          "version": "0.2.3",
+          "from": "cookie@0.2.3",
+          "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.2.3.tgz"
         },
         "depd": {
           "version": "1.1.0",
@@ -1635,6 +1657,11 @@
       "from": "passport-http-bearer@latest",
       "resolved": "https://registry.npmjs.org/passport-http-bearer/-/passport-http-bearer-1.0.1.tgz"
     },
+    "passport-local": {
+      "version": "1.0.0",
+      "from": "passport-local@latest",
+      "resolved": "https://registry.npmjs.org/passport-local/-/passport-local-1.0.0.tgz"
+    },
     "passport-oauth2-client-password": {
       "version": "0.1.2",
       "from": "passport-oauth2-client-password@latest",
@@ -2127,6 +2154,18 @@
       "version": "1.0.2",
       "from": "uglify-to-browserify@>=1.0.0 <1.1.0",
       "resolved": "https://registry.npmjs.org/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz"
+    },
+    "uid-safe": {
+      "version": "2.0.0",
+      "from": "uid-safe@>=2.0.0 <2.1.0",
+      "resolved": "https://registry.npmjs.org/uid-safe/-/uid-safe-2.0.0.tgz",
+      "dependencies": {
+        "base64-url": {
+          "version": "1.2.1",
+          "from": "base64-url@1.2.1",
+          "resolved": "https://registry.npmjs.org/base64-url/-/base64-url-1.2.1.tgz"
+        }
+      }
     },
     "uid2": {
       "version": "0.0.3",

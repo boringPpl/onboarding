@@ -1,12 +1,41 @@
 import mongoose from 'mongoose'
 import passport from 'passport'
 import jwt from 'jsonwebtoken'
+import { Strategy as LocalStrategy } from 'passport-local'
 import { BasicStrategy } from 'passport-http'
 import { Strategy as ClientPasswordStrategy } from 'passport-oauth2-client-password'
 import { Strategy as BearerStrategy } from 'passport-http-bearer'
 
 const Client = mongoose.model('Client')
 const User = mongoose.model('User')
+
+passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'password' },
+  async (username, password, done) => {
+    try {
+      let user = await User.findOne({ email: username }).exec()
+      if (!user) return done(null, false)
+
+      user.comparePassword(password, (err, isMatch) => {
+        if (err) return done(err)
+        if (!isMatch) return done(null, false)
+
+        done(null, user)
+      })
+    } catch (err) {
+      done(err)
+    }
+  }
+))
+
+passport.serializeUser((user, done) => {
+  done(null, user._id)
+})
+
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user)
+  })
+})
 
 passport.use(new BasicStrategy(
   async (clientId, clientSecret, done) => {

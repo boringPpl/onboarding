@@ -2,7 +2,6 @@ import mongoose from 'mongoose'
 import oauth2orize from 'oauth2orize'
 import passport from 'passport'
 import jwt from 'jsonwebtoken'
-import './auth'
 
 const server = oauth2orize.createServer()
 
@@ -32,6 +31,5 @@ export default {
     passport.authenticate(['basic', 'oauth2-client-password'], { session: false }),
     server.token(),
     server.errorHandler()
-  ],
-  restrict: passport.authenticate('bearer', { session: false })
+  ]
 }
