@@ -1,7 +1,10 @@
 import express from 'express'
 import passport from 'passport'
+import React from 'react'
+import ReactDOM from 'react-dom/server'
 import './auth'
 import oauth2 from './oauth2'
+import Login from '../containers/Login'
 
 const router = express.Router()
 
@@ -11,7 +14,11 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/login', (req, res, next) => {
-  res.render('login')
+  res.render('index', {
+    html: ReactDOM.renderToString(<Login />),
+    js: 'login',
+    css: 'login'
+  })
 })
 
 router.get('/logout', (req, res) => {
@@ -27,7 +34,7 @@ router.post('/login', passport.authenticate('local', {
 router.post('/oauth/token', oauth2.token)
 router.use('/api', passport.authenticate('bearer', { session: false }))
 router.use('/admin', (req, res, next) => {
-  if (req.user) {
+  if (req.isAuthenticated()) {
     next()
   } else {
     res.redirect('/login')

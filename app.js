@@ -10,34 +10,36 @@ import passport from 'passport'
 // import multer from 'multer'
 // import favicon from 'serve-favicon'
 
-// load environment variables
-dotenv.config()
-
-mongoose.Promise = global.Promise
-mongoose.connect(process.env.MONGO_URI)
-
 import './models'
 import routes from './routes/index'
 import api from './routes/api'
 import admin from './routes/admin'
 
+// load environment variables
+dotenv.config()
+
+// config mongoose
+mongoose.Promise = global.Promise
+mongoose.connect(process.env.MONGO_URI)
+
 const app = express()
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'templates'))
 app.set('view engine', 'jade')
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(logger('dev'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static(path.join(__dirname, 'dist')))
+app.use(cookieParser(process.env.SESSION_SECRET))
 app.use(session({
   resave: false,
-  saveUninitialized: false,
-  secret: process.env.SESSION_SECRET
+  saveUninitialized: true,
+  secret: process.env.SESSION_SECRET,
+  cookie: { httpOnly: true, maxAge: 2419200000 }
 }))
 app.use(passport.initialize())
 app.use(passport.session())

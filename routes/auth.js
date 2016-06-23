@@ -28,13 +28,12 @@ passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'passwor
 ))
 
 passport.serializeUser((user, done) => {
-  done(null, user._id)
+  let { _id, email, name } = user
+  done(null, { _id, email, name })
 })
 
-passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
-    done(err, user)
-  })
+passport.deserializeUser((sessionUser, done) => {
+  done(null, sessionUser)
 })
 
 passport.use(new BasicStrategy(

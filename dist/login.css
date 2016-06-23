@@ -1,0 +1,11 @@
+.login__login {
+  padding: 16px;
+  text-align: center;
+}
+
+.login__loginDialog {
+  width: 100%;
+  max-width: 320px;
+  padding: 16px;
+  margin: 10% auto 0;
+}

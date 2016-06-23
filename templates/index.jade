@@ -1,0 +1,10 @@
+extends layout
+
+block css
+  link(rel='stylesheet', href='/#{css}.css')
+
+block content
+  #react-root!= html
+
+block js
+  script(src='/#{js}.js')

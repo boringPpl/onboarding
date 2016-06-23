@@ -1,11 +1,21 @@
 #!/usr/bin/env node
 
 /**
+ * Global variables.
+ */
+
+global.__CLIENT__ = false
+global.__SERVER__ = true
+global.__DEV__ = false
+
+/**
  * Module dependencies.
  */
 
 require('babel-register')
 require('babel-polyfill')
+var hook = require('css-modules-require-hook')
+hook({ generateScopedName: '[name]__[local]' })
 var app = require('../app')
 var debug = require('debug')('brainserver-express:server')
 var http = require('http')
