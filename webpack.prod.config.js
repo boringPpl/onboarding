@@ -2,17 +2,17 @@ var path = require('path')
 var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+var SRC_PATH = path.join(__dirname, '/public/javascripts/app.js')
+var DIST_PATH = path.join(__dirname, '/dist')
+
 module.exports = {
   devtool: 'cheap-module-source-map',
-  context: path.join(__dirname, '/containers'),
   entry: {
-    login: './Login.js',
-    dashboard: './admin/Dashboard.js'
+    app: SRC_PATH
   },
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: '[name].js',
-    publicPath: '/'
+    path: DIST_PATH,
+    filename: '[name].bundle.js'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
@@ -23,20 +23,16 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
-    }),
-    new webpack.DefinePlugin({
-      __CLIENT__: true,
-      __SERVER__: false,
-      __DEV__: false
     })
   ],
   resolve: {
-    modulesDirectories: ['node_modules', '/']
+    modulesDirectories: ['node_modules', 'views', 'public']
   },
   module: {
     loaders: [
       { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
-      { test: /\.s?css$/, loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]__[local]') }
+      { test: /\.s?css$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]!sass') },
+      { test: /\.(jpe?g|png|gif|svg)$/, loader: 'file?name=[name].[ext]' }
     ]
   }
 }

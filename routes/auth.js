@@ -13,11 +13,11 @@ passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'passwor
   async (username, password, done) => {
     try {
       let user = await User.findOne({ email: username }).exec()
-      if (!user) return done(null, false)
+      if (!user) return done(null, false, { message: 'This email is not existed.' })
 
       user.comparePassword(password, (err, isMatch) => {
         if (err) return done(err)
-        if (!isMatch) return done(null, false)
+        if (!isMatch) return done(null, false, { message: 'Wrong password.' })
 
         done(null, user)
       })

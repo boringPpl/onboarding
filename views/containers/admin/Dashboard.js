@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import Layout from './Layout'
 
 class Dashboard extends Component {
@@ -11,14 +10,10 @@ class Dashboard extends Component {
     return (
       <Layout>
         <h1>This is dashboard</h1>
-        <button onClick={this._handleClick}>Logout</button>
+        <a href='/logout'>Logout</a>
       </Layout>
     )
   }
-}
-
-if (__CLIENT__) {
-  ReactDOM.render(<Dashboard />, document.getElementById('react-root'))
 }
 
 export default Dashboard

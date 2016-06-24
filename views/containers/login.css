@@ -1,0 +1,25 @@
+.login {
+  padding: 16px;
+}
+
+.loginDialog {
+  width: 100%;
+  max-width: 320px;
+  padding: 16px;
+  margin: 10% auto 0;
+}
+
+.loginLogo {
+  display: block;
+  max-width: 80px;
+  margin: 32px auto;
+}
+
+.signup {
+  text-align: center;
+  color: gray;
+
+  a {
+    color: gray;
+  }
+}

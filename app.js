@@ -7,6 +7,7 @@ import session from 'express-session'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import passport from 'passport'
+import flash from 'connect-flash'
 // import multer from 'multer'
 // import favicon from 'serve-favicon'
 
@@ -43,6 +44,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(flash())
 
 app.use('/', routes)
 app.use('/api/v1', api)

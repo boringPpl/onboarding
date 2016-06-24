@@ -3,7 +3,7 @@ var gutil = require('gulp-util')
 var webpack = require('webpack')
 
 gulp.task('webpack:watch', function () {
-  gulp.watch(['containers/**/*', 'components/**/*'], ['webpack'])
+  gulp.watch(['views/**/*', 'public/**/*'], ['webpack'])
 })
 
 gulp.task('webpack', function (cb) {

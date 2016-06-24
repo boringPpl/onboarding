@@ -10,7 +10,7 @@ gulp.task('nodemon', function () {
   })
 
   return nodemon({
-    ignore: ['dist'],
+    ignore: ['public', 'dist'],
     script: 'bin/www'
   })
 })
