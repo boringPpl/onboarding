@@ -5,10 +5,10 @@ import ReactDOM from 'react-dom/server'
 import './auth'
 import oauth2 from './oauth2'
 import Login from '../views/containers/Login'
+import * as middlewares from './middlewares'
 
 const router = express.Router()
 
-/* GET home page. */
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' })
 })
@@ -36,12 +36,6 @@ router.post('/login', passport.authenticate('local', {
 
 router.post('/oauth/token', oauth2.token)
 router.use('/api', passport.authenticate('bearer', { session: false }))
-router.use('/admin', (req, res, next) => {
-  if (req.isAuthenticated()) {
-    next()
-  } else {
-    res.redirect('/login')
-  }
-})
+router.use('/admin', middlewares.ensureAuthorized)
 
 export default router

@@ -8,7 +8,10 @@ const userSchema = mongoose.Schema({
   },
   email: { type: String, unique: true, index: true, required: true },
   password: { type: String },
-  isAdmin: { type: Boolean }
+  roles: {
+    type: [{ type: String, enum: ['admin', 'contributor', 'teacher'] }],
+    default: []
+  }
 })
 
 userSchema.pre('save', function (next) {
@@ -17,6 +20,10 @@ userSchema.pre('save', function (next) {
     this.password = hash
     next()
   })
+})
+
+userSchema.virtual('name.full').get(function () {
+  return this.name.first + ' ' + this.name.last
 })
 
 userSchema.methods.comparePassword = function (candidatePassword, cb) {

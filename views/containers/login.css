@@ -1,21 +1,21 @@
-.login {
+.wrapper {
   padding: 16px;
 }
 
-.loginDialog {
+.dialog {
   width: 100%;
   max-width: 320px;
   padding: 16px;
   margin: 10% auto 0;
 }
 
-.loginLogo {
+.logo {
   display: block;
   max-width: 80px;
   margin: 32px auto;
 }
 
-.signup {
+.text {
   text-align: center;
   color: gray;
 

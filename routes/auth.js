@@ -10,10 +10,11 @@ const Client = mongoose.model('Client')
 const User = mongoose.model('User')
 
 passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'password' },
-  async (username, password, done) => {
+  async (email, password, done) => {
     try {
-      let user = await User.findOne({ email: username }).exec()
+      let user = await User.findOne({ email }).exec()
       if (!user) return done(null, false, { message: 'This email is not existed.' })
+      if (!user.roles.length) return done(null, false, { message: 'Not authorized.' })
 
       user.comparePassword(password, (err, isMatch) => {
         if (err) return done(err)
@@ -28,8 +29,8 @@ passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'passwor
 ))
 
 passport.serializeUser((user, done) => {
-  let { _id, email, name } = user
-  done(null, { _id, email, name })
+  let { _id, email, name, roles } = user
+  done(null, { _id, email, name, roles })
 })
 
 passport.deserializeUser((sessionUser, done) => {

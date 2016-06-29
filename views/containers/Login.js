@@ -1,17 +1,30 @@
 import React, { Component, PropTypes } from 'react'
 import Paper from 'material-ui/Paper'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
 import Snackbar from 'material-ui/Snackbar'
-// import { Grid, Row, Col } from 'react-flexbox-grid'
 import App from './App'
-import LoginForm from '../components/LoginForm'
 import styles from './login.css'
 
 class Login extends Component {
   static propTypes = {
     data: PropTypes.object
   }
-  state = {
-    open: !!this.props.data.error.length
+
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      open: false
+    }
+  }
+
+  componentDidMount () {
+    setTimeout(() => {
+      this.setState({
+        open: !!this.props.data.error.length
+      })
+    }, 0)
   }
 
   _handleRequestClose = () => {
@@ -25,22 +38,46 @@ class Login extends Component {
 
     return (
       <App>
-        <div className={styles.login}>
-          <Paper zDepth={1} className={styles.loginDialog}>
-            <img src='logo-notext.png' className={styles.loginLogo} />
+        <div className={styles.wrapper}>
+          <Paper zDepth={1} className={styles.dialog}>
+            <img src='logo-notext.png' className={styles.logo} />
             <br />
-            <LoginForm />
+            <form method='post' action='/login'>
+              <TextField
+                id='email'
+                name='email'
+                hintText='Email'
+                fullWidth
+              />
+              <br />
+              <TextField
+                id='password'
+                name='password'
+                type='password'
+                hintText='Password'
+                fullWidth
+              />
+              <br />
+              <br />
+              <RaisedButton
+                type='submit'
+                label='Login'
+                secondary
+                style={{ width: '100%' }}
+              />
+            </form>
             <br />
-            <p className={styles.signup}>
+            <p className={styles.text}>
               <small>Try beta version?</small>
               <br />
               <small>Please contact us <a href='#'>here</a></small>
             </p>
           </Paper>
 
-          <p className={styles.signup}>
+          <p className={styles.text}>
             <small>&copy; 2014 hasBrain</small>
           </p>
+
           <Snackbar
             bodyStyle={{ maxWidth: 288 }}
             open={this.state.open}

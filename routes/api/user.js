@@ -13,8 +13,8 @@ export async function list (req, res, next) {
 
 export async function create (req, res, next) {
   try {
-    let { first_name: first, last_name: last, email, password, isAdmin } = req.body
-    let newUser = await User.create({ name: { first, last }, email, password, isAdmin })
+    let { first_name: first, last_name: last, email, password, roles } = req.body
+    let newUser = await User.create({ name: { first, last }, email, password, roles })
     res.send(newUser)
   } catch (err) {
     res.send(err)

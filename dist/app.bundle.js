@@ -73,7 +73,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"1":"Login","2":"Dashboard"}[chunkId]||chunkId) + ".bundle.js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"1":"Login","2":"Dashboard","3":"UserList","4":"UserForm"}[chunkId]||chunkId) + ".bundle.js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -85,7 +85,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -95,7 +95,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(37);\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _routePattern = __webpack_require__(167);\n\nvar _routePattern2 = _interopRequireDefault(_routePattern);\n\n__webpack_require__(171);\n\n__webpack_require__(175);\n\n__webpack_require__(177);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n__webpack_require__(179);\n\nvar loadLogin = __webpack_require__(182);\nvar loadDashboard = __webpack_require__(393);\nvar routes = [{ pattern: _routePattern2.default.fromString('/login'), loadComponent: loadLogin }, { pattern: _routePattern2.default.fromString('/admin'), loadComponent: loadDashboard }];\n\nvar currentRoute = routes.find(function (_ref) {\n  var pattern = _ref.pattern;\n  return pattern.matches(window.location.pathname);\n});\nvar data = window.__INITIAL_DATA__;\n\ncurrentRoute.loadComponent(function (Component) {\n  _reactDom2.default.render(_react2.default.createElement(Component, { data: data }), document.getElementById('react-root'));\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/javascripts/app.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/javascripts/app.js?");
+	eval("'use strict';\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(37);\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _routePattern = __webpack_require__(167);\n\nvar _routePattern2 = _interopRequireDefault(_routePattern);\n\n__webpack_require__(171);\n\n__webpack_require__(175);\n\n__webpack_require__(177);\n\n__webpack_require__(179);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n__webpack_require__(181);\n\nvar loadLogin = __webpack_require__(184);\nvar loadDashboard = __webpack_require__(394);\nvar loadUserList = __webpack_require__(437);\nvar loadUserForm = __webpack_require__(459);\n\nvar routes = [{ pattern: _routePattern2.default.fromString('/login'), loadComponent: loadLogin }, { pattern: _routePattern2.default.fromString('/admin'), loadComponent: loadDashboard }, { pattern: _routePattern2.default.fromString('/admin/users'), loadComponent: loadUserList }, { pattern: _routePattern2.default.fromString('/admin/users/new'), loadComponent: loadUserForm }, { pattern: _routePattern2.default.fromString('/admin/users/:id'), loadComponent: loadUserForm }];\n\nvar currentRoute = routes.find(function (_ref) {\n  var pattern = _ref.pattern;\n  return pattern.matches(window.location.pathname);\n});\nvar data = window.__INITIAL_DATA__;\n\nif (currentRoute) {\n  currentRoute.loadComponent(function (Component) {\n    _reactDom2.default.render(_react2.default.createElement(Component, { data: data }), document.getElementById('react-root'));\n  });\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/javascripts/app.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/javascripts/app.js?");
 
 /***/ },
 /* 1 */
@@ -1125,7 +1125,12 @@
 
 /***/ },
 /* 172 */,
-/* 173 */,
+/* 173 */
+/***/ function(module, exports) {
+
+	eval("/*\r\n\tMIT License http://www.opensource.org/licenses/mit-license.php\r\n\tAuthor Tobias Koppers @sokra\r\n*/\r\n// css base code, injected by the css-loader\r\nmodule.exports = function() {\r\n\tvar list = [];\r\n\r\n\t// return the list of modules as css string\r\n\tlist.toString = function toString() {\r\n\t\tvar result = [];\r\n\t\tfor(var i = 0; i < this.length; i++) {\r\n\t\t\tvar item = this[i];\r\n\t\t\tif(item[2]) {\r\n\t\t\t\tresult.push(\"@media \" + item[2] + \"{\" + item[1] + \"}\");\r\n\t\t\t} else {\r\n\t\t\t\tresult.push(item[1]);\r\n\t\t\t}\r\n\t\t}\r\n\t\treturn result.join(\"\");\r\n\t};\r\n\r\n\t// import a list of modules into the list\r\n\tlist.i = function(modules, mediaQuery) {\r\n\t\tif(typeof modules === \"string\")\r\n\t\t\tmodules = [[null, modules, \"\"]];\r\n\t\tvar alreadyImportedModules = {};\r\n\t\tfor(var i = 0; i < this.length; i++) {\r\n\t\t\tvar id = this[i][0];\r\n\t\t\tif(typeof id === \"number\")\r\n\t\t\t\talreadyImportedModules[id] = true;\r\n\t\t}\r\n\t\tfor(i = 0; i < modules.length; i++) {\r\n\t\t\tvar item = modules[i];\r\n\t\t\t// skip already imported module\r\n\t\t\t// this implementation is not 100% perfect for weird media query combinations\r\n\t\t\t//  when a module is imported multiple times with different media queries.\r\n\t\t\t//  I hope this will never occur (Hey this way we have smaller bundles)\r\n\t\t\tif(typeof item[0] !== \"number\" || !alreadyImportedModules[item[0]]) {\r\n\t\t\t\tif(mediaQuery && !item[2]) {\r\n\t\t\t\t\titem[2] = mediaQuery;\r\n\t\t\t\t} else if(mediaQuery) {\r\n\t\t\t\t\titem[2] = \"(\" + item[2] + \") and (\" + mediaQuery + \")\";\r\n\t\t\t\t}\r\n\t\t\t\tlist.push(item);\r\n\t\t\t}\r\n\t\t}\r\n\t};\r\n\treturn list;\r\n};\r\n\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/css-loader/lib/css-base.js\n ** module id = 173\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./~/css-loader/lib/css-base.js?");
+
+/***/ },
 /* 174 */,
 /* 175 */
 /***/ function(module, exports) {
@@ -1137,36 +1142,41 @@
 /* 177 */
 /***/ function(module, exports) {
 
-	eval("// removed by extract-text-webpack-plugin\nmodule.exports = {\"login\":\"login__login\",\"loginDialog\":\"login__loginDialog\",\"loginLogo\":\"login__loginLogo\",\"signup\":\"login__signup\"};\n\n/*****************\n ** WEBPACK FOOTER\n ** ./views/containers/login.css\n ** module id = 177\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/login.css?");
+	eval("// removed by extract-text-webpack-plugin\nmodule.exports = {\"wrapper\":\"login__wrapper\",\"dialog\":\"login__dialog\",\"logo\":\"login__logo\",\"text\":\"login__text\"};\n\n/*****************\n ** WEBPACK FOOTER\n ** ./views/containers/login.css\n ** module id = 177\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/login.css?");
 
 /***/ },
 /* 178 */,
 /* 179 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	eval("var map = {\n\t\"./logo-notext.png\": 180,\n\t\"./logo.png\": 181\n};\nfunction webpackContext(req) {\n\treturn __webpack_require__(webpackContextResolve(req));\n};\nfunction webpackContextResolve(req) {\n\treturn map[req] || (function() { throw new Error(\"Cannot find module '\" + req + \"'.\") }());\n};\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = 179;\n\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/images nonrecursive ^.*$\n ** module id = 179\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/images_nonrecursive_^.*$?");
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	eval("module.exports = __webpack_require__.p + \"logo-notext.png\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/images/logo-notext.png\n ** module id = 180\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/images/logo-notext.png?");
+	eval("// removed by extract-text-webpack-plugin\nmodule.exports = {\"content\":\"layout__content\",\"heading\":\"layout__heading\",\"subheading\":\"layout__subheading\",\"checkbox\":\"layout__checkbox\"};\n\n/*****************\n ** WEBPACK FOOTER\n ** ./views/containers/admin/layout.css\n ** module id = 179\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/layout.css?");
 
 /***/ },
+/* 180 */,
 /* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = __webpack_require__.p + \"logo.png\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/images/logo.png\n ** module id = 181\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/images/logo.png?");
+	eval("var map = {\n\t\"./logo-notext.png\": 182,\n\t\"./logo.png\": 183\n};\nfunction webpackContext(req) {\n\treturn __webpack_require__(webpackContextResolve(req));\n};\nfunction webpackContextResolve(req) {\n\treturn map[req] || (function() { throw new Error(\"Cannot find module '\" + req + \"'.\") }());\n};\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = 181;\n\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/images nonrecursive ^.*$\n ** module id = 181\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/images_nonrecursive_^.*$?");
 
 /***/ },
 /* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(1, function(require) {\n\t\tcb(__webpack_require__(183));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Login!./views/containers/Login.js\n ** module id = 182\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/Login.js?./~/bundle-loader?lazy&name=Login");
+	eval("module.exports = __webpack_require__.p + \"logo-notext.png\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/images/logo-notext.png\n ** module id = 182\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/images/logo-notext.png?");
 
 /***/ },
-/* 183 */,
-/* 184 */,
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = __webpack_require__.p + \"logo.png\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/images/logo.png\n ** module id = 183\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/images/logo.png?");
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(1, function(require) {\n\t\tcb(__webpack_require__(185));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Login!./views/containers/Login.js\n ** module id = 184\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/Login.js?./~/bundle-loader?lazy&name=Login");
+
+/***/ },
 /* 185 */,
 /* 186 */,
 /* 187 */,
@@ -1375,10 +1385,86 @@
 /* 390 */,
 /* 391 */,
 /* 392 */,
-/* 393 */
+/* 393 */,
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(2, function(require) {\n\t\tcb(__webpack_require__(394));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Dashboard!./views/containers/admin/Dashboard.js\n ** module id = 393\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/Dashboard.js?./~/bundle-loader?lazy&name=Dashboard");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(2, function(require) {\n\t\tcb(__webpack_require__(395));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Dashboard!./views/containers/admin/Dashboard.js\n ** module id = 394\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/Dashboard.js?./~/bundle-loader?lazy&name=Dashboard");
+
+/***/ },
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(3, function(require) {\n\t\tcb(__webpack_require__(438));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserList!./views/containers/admin/user/List.js\n ** module id = 437\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/List.js?./~/bundle-loader?lazy&name=UserList");
+
+/***/ },
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(4, function(require) {\n\t\tcb(__webpack_require__(460));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserForm!./views/containers/admin/user/Form.js\n ** module id = 459\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/Form.js?./~/bundle-loader?lazy&name=UserForm");
 
 /***/ }
 /******/ ]);

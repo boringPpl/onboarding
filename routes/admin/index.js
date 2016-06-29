@@ -1,14 +1,14 @@
 import express from 'express'
-import React from 'react'
-import ReactDOM from 'react-dom/server'
-import Dashboard from '../../views/containers/admin/Dashboard'
+import * as dashboard from './dashboard'
+import * as user from './user'
 
 const router = express.Router()
 
-router.get('/', function (req, res, next) {
-  res.render('index', {
-    html: ReactDOM.renderToString(<Dashboard />)
-  })
-})
+router.get('/', dashboard.index)
+
+router.get('/users', user.list)
+router.get('/users/new', user.newUser)
+router.post('/users', user.create)
+router.get('/users/:id', user.get)
 
 export default router
