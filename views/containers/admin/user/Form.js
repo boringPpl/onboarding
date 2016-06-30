@@ -4,19 +4,28 @@ import TextField from 'material-ui/TextField'
 import Checkbox from 'material-ui/Checkbox'
 import RaisedButton from 'material-ui/RaisedButton'
 import { Row, Col } from 'react-flexbox-grid'
+import includes from 'lodash/includes'
 import Layout from '../Layout'
 import styles from '../layout.css'
 
 class UserForm extends Component {
   render () {
+    let user = this.props.data.user || {}
+    let { id, firstname, lastname, fullname, email, roles } = user
+    let heading = id ? fullname : 'New user'
+    let action = id ? `/admin/users/${id}` : '/admin/users'
+    let roleAdmin = includes(roles, 'admin')
+    let roleContributor = includes(roles, 'contributor')
+    let roleTeacher = includes(roles, 'teacher')
+
     return (
-      <Layout>
+      <Layout {...this.props}>
         <Row>
           <Col xs={12} md={9}>
-            <h2 className={styles.heading}>Add new user</h2>
+            <h2 className={styles.heading}>{heading}</h2>
 
             <Paper zDepth={1} style={{ padding: 16 }}>
-              <form action='/admin/users' method='post'>
+              <form action={action} method='post'>
                 <h3 className={styles.subheading}>Info</h3>
 
                 <Row>
@@ -26,6 +35,7 @@ class UserForm extends Component {
                       name='first_name'
                       hintText='First name'
                       fullWidth
+                      defaultValue={firstname}
                     />
                   </Col>
                   <Col xs={12} sm={6}>
@@ -34,6 +44,7 @@ class UserForm extends Component {
                       name='last_name'
                       hintText='Last name'
                       fullWidth
+                      defaultValue={lastname}
                     />
                   </Col>
                 </Row>
@@ -45,6 +56,7 @@ class UserForm extends Component {
                       name='email'
                       hintText='Email'
                       fullWidth
+                      defaultValue={email}
                     />
                   </Col>
                 </Row>
@@ -68,20 +80,23 @@ class UserForm extends Component {
                     <Checkbox
                       label='Admin'
                       name='roles'
-                      value='admin'
+                      defaultValue='admin'
                       className={styles.checkbox}
+                      defaultChecked={roleAdmin}
                     />
                     <Checkbox
                       label='Contributor'
                       name='roles'
-                      value='contributor'
+                      defaultValue='contributor'
                       className={styles.checkbox}
+                      defaultChecked={roleContributor}
                     />
                     <Checkbox
                       label='Teacher'
                       name='roles'
-                      value='teacher'
+                      defaultValue='teacher'
                       className={styles.checkbox}
+                      defaultChecked={roleTeacher}
                     />
                   </Col>
                 </Row>
@@ -90,7 +105,7 @@ class UserForm extends Component {
 
                 <Row>
                   <Col xs={12}>
-                    <RaisedButton type='submit' label='Create user' primary />
+                    <RaisedButton type='submit' label='Save' primary />
                   </Col>
                 </Row>
               </form>

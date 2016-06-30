@@ -8,7 +8,9 @@ import process from '../../lib/processData'
 const User = mongoose.model('User')
 const userPresenter = {
   id: data => data._id.toString(),
-  name: data => data.name.full,
+  firstname: data => data.name.first,
+  lastname: data => data.name.last,
+  fullname: data => data.name.full,
   email: 'email',
   roles: 'roles'
 }
@@ -57,4 +59,40 @@ export async function list (req, res, next) {
 }
 
 export async function get (req, res, next) {
+  try {
+    let user = await User.findById(req.params.id).exec()
+    const initialData = {
+      error: req.flash('error'),
+      user: process(user, userPresenter)
+    }
+    res.render('index', {
+      html: ReactDOM.renderToString(<UserForm data={initialData} />),
+      data: JSON.stringify(initialData)
+    })
+  } catch (err) {
+    res.send(err)
+  }
+}
+
+export async function update (req, res, next) {
+  try {
+    let user = await User.findById(req.params.id).exec()
+    let {
+      first_name: first,
+      last_name: last,
+      email,
+      password,
+      roles
+    } = req.body
+    user.name.first = first
+    user.name.last = last
+    user.email = email
+    user.roles = roles
+    if (password) user.password = password
+    await user.save()
+    res.redirect('/admin/users')
+  } catch (err) {
+    req.flash('error', err.message)
+    res.redirect('back')
+  }
 }

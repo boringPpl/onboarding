@@ -10,5 +10,6 @@ router.get('/users', user.list)
 router.get('/users/new', user.newUser)
 router.post('/users', user.create)
 router.get('/users/:id', user.get)
+router.post('/users/:id', user.update)
 
 export default router

@@ -4,6 +4,7 @@ import Drawer from 'material-ui/Drawer'
 import { List, ListItem } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import IconButton from 'material-ui/IconButton'
+import Snackbar from 'material-ui/Snackbar'
 import ActionDashboard from 'material-ui/svg-icons/action/dashboard'
 import SocialPerson from 'material-ui/svg-icons/social/person'
 import SocialPersonAdd from 'material-ui/svg-icons/social/person-add'
@@ -19,7 +20,22 @@ class Layout extends Component {
     children: PropTypes.node
   }
   state = {
-    openDrawer: false
+    openDrawer: false,
+    openSnackbar: false
+  }
+
+  componentDidMount () {
+    setTimeout(() => {
+      this.setState({
+        openSnackbar: !!this.props.data.error.length
+      })
+    }, 0)
+  }
+
+  _handleRequestClose = () => {
+    this.setState({
+      openSnackbar: false
+    })
   }
 
   _handleToggleDrawer = () => {
@@ -36,7 +52,8 @@ class Layout extends Component {
   }
 
   render () {
-    const { openDrawer } = this.state
+    const { openDrawer, openSnackbar } = this.state
+    const { error } = this.props.data
 
     return (
       <App>
@@ -104,6 +121,14 @@ class Layout extends Component {
           }}>
             {this.props.children}
           </div>
+
+          <Snackbar
+            bodyStyle={{ maxWidth: 288 }}
+            open={openSnackbar}
+            message={error[0] || ''}
+            autoHideDuration={4000}
+            onRequestClose={this._handleRequestClose}
+          />
         </div>
       </App>
     )
