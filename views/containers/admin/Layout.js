@@ -101,6 +101,8 @@ class Layout extends Component {
               <ListItem
                 primaryText='Clients'
                 leftIcon={<HardwarePhone />}
+                onTouchTap={this._handleTapListItem}
+                data-href='/admin/clients'
               />
             </List>
             <Divider />

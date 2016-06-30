@@ -96,3 +96,13 @@ export async function update (req, res, next) {
     res.redirect('back')
   }
 }
+
+export async function remove (req, res, next) {
+  try {
+    await User.remove({ _id: req.params.id }).exec()
+    res.redirect('/admin/users')
+  } catch (err) {
+    req.flash('error', err.message)
+    res.redirect('back')
+  }
+}
