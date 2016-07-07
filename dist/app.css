@@ -808,8 +808,8 @@ body {
   margin: 32px auto; }
 
 .login__text {
-  text-align: center;
-  color: gray; }
+  color: gray;
+  text-align: center; }
   .login__text a {
     color: gray; }
 .layout__content {

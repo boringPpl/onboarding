@@ -1,10 +1,13 @@
 import mongoose from 'mongoose'
 import passport from 'passport'
 import jwt from 'jsonwebtoken'
+import request from 'request-promise'
+import find from 'lodash/find'
 import { Strategy as LocalStrategy } from 'passport-local'
 import { BasicStrategy } from 'passport-http'
 import { Strategy as ClientPasswordStrategy } from 'passport-oauth2-client-password'
 import { Strategy as BearerStrategy } from 'passport-http-bearer'
+import { Strategy as GitHubStrategy } from 'passport-github2'
 
 const Client = mongoose.model('Client')
 const User = mongoose.model('User')
@@ -75,3 +78,27 @@ passport.use(new BearerStrategy(
     }
   }
 ))
+
+passport.use(new GitHubStrategy({
+  clientID: process.env.GITHUB_CLIENT_ID,
+  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  callbackURL: process.env.GITHUB_CALLBACK_URL
+}, async (accessToken, refreshToken, profile, done) => {
+  try {
+    let emails = await request.get({ url: `https://api.github.com/user/emails?access_token=${accessToken}`, headers: { 'user-agent': 'node.js' } })
+    let primaryEmail = find(JSON.parse(emails), 'primary').email
+    let user = await User.findOne({ email: primaryEmail }).exec()
+    if (user) {
+      user.githubId = profile.id
+    } else {
+      user = new User({
+        email: primaryEmail,
+        githubId: profile.id
+      })
+    }
+    await user.save()
+    done(null, user)
+  } catch (err) {
+    done(err)
+  }
+}))

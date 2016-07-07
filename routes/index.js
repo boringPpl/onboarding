@@ -38,4 +38,14 @@ router.post('/oauth/token', oauth2.token)
 router.use('/api', passport.authenticate('bearer', { session: false }))
 router.use('/admin', middlewares.ensureAuthorized)
 
+/* Github */
+router.get('/auth/github',
+  passport.authenticate('github', { scope: ['user:email', 'repo'] }))
+
+router.get('/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  (req, res) => {
+    res.redirect('/admin')
+  })
+
 export default router

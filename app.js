@@ -11,11 +11,6 @@ import flash from 'connect-flash'
 // import multer from 'multer'
 // import favicon from 'serve-favicon'
 
-import './models'
-import routes from './routes/index'
-import api from './routes/api'
-import admin from './routes/admin'
-
 // load environment variables
 dotenv.config()
 
@@ -24,6 +19,10 @@ mongoose.Promise = global.Promise
 mongoose.connect(process.env.MONGO_URI)
 
 const app = express()
+require('./models')
+const routes = require('./routes')
+const api = require('./routes/api')
+const admin = require('./routes/admin')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'templates'))

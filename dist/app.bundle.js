@@ -95,7 +95,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(37);\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _routePattern = __webpack_require__(167);\n\nvar _routePattern2 = _interopRequireDefault(_routePattern);\n\n__webpack_require__(171);\n\n__webpack_require__(175);\n\n__webpack_require__(177);\n\n__webpack_require__(179);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n__webpack_require__(181);\n\nvar loadLogin = __webpack_require__(184);\nvar loadDashboard = __webpack_require__(394);\nvar loadUserList = __webpack_require__(437);\nvar loadUserForm = __webpack_require__(474);\nvar loadClientList = __webpack_require__(487);\n\nvar routes = [{ pattern: _routePattern2.default.fromString('/login'), loadComponent: loadLogin }, { pattern: _routePattern2.default.fromString('/admin'), loadComponent: loadDashboard }, { pattern: _routePattern2.default.fromString('/admin/users'), loadComponent: loadUserList }, { pattern: _routePattern2.default.fromString('/admin/users/new'), loadComponent: loadUserForm }, { pattern: _routePattern2.default.fromString('/admin/users/:id'), loadComponent: loadUserForm }, { pattern: _routePattern2.default.fromString('/admin/clients'), loadComponent: loadClientList }];\n\nvar currentRoute = routes.find(function (_ref) {\n  var pattern = _ref.pattern;\n  return pattern.matches(window.location.pathname);\n});\nvar data = window.__INITIAL_DATA__;\n\nif (currentRoute) {\n  currentRoute.loadComponent(function (Component) {\n    _reactDom2.default.render(_react2.default.createElement(Component, { data: data }), document.getElementById('react-root'));\n  });\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/javascripts/app.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/javascripts/app.js?");
+	eval("'use strict';\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(37);\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _routePattern = __webpack_require__(167);\n\nvar _routePattern2 = _interopRequireDefault(_routePattern);\n\n__webpack_require__(171);\n\n__webpack_require__(175);\n\n__webpack_require__(177);\n\n__webpack_require__(179);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n__webpack_require__(181);\n\nvar loadLogin = __webpack_require__(184);\nvar loadDashboard = __webpack_require__(396);\nvar loadUserList = __webpack_require__(439);\nvar loadUserForm = __webpack_require__(476);\nvar loadClientList = __webpack_require__(489);\n\nvar routes = [{ pattern: _routePattern2.default.fromString('/login'), loadComponent: loadLogin }, { pattern: _routePattern2.default.fromString('/admin'), loadComponent: loadDashboard }, { pattern: _routePattern2.default.fromString('/admin/users'), loadComponent: loadUserList }, { pattern: _routePattern2.default.fromString('/admin/users/new'), loadComponent: loadUserForm }, { pattern: _routePattern2.default.fromString('/admin/users/:id'), loadComponent: loadUserForm }, { pattern: _routePattern2.default.fromString('/admin/clients'), loadComponent: loadClientList }];\n\nvar currentRoute = routes.find(function (_ref) {\n  var pattern = _ref.pattern;\n  return pattern.matches(window.location.pathname);\n});\nvar data = window.__INITIAL_DATA__;\n\nif (currentRoute) {\n  currentRoute.loadComponent(function (Component) {\n    _reactDom2.default.render(_react2.default.createElement(Component, { data: data }), document.getElementById('react-root'));\n  });\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/javascripts/app.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/javascripts/app.js?");
 
 /***/ },
 /* 1 */
@@ -1386,14 +1386,14 @@
 /* 391 */,
 /* 392 */,
 /* 393 */,
-/* 394 */
+/* 394 */,
+/* 395 */,
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(2, function(require) {\n\t\tcb(__webpack_require__(395));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Dashboard!./views/containers/admin/Dashboard.js\n ** module id = 394\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/Dashboard.js?./~/bundle-loader?lazy&name=Dashboard");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(2, function(require) {\n\t\tcb(__webpack_require__(397));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Dashboard!./views/containers/admin/Dashboard.js\n ** module id = 396\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/Dashboard.js?./~/bundle-loader?lazy&name=Dashboard");
 
 /***/ },
-/* 395 */,
-/* 396 */,
 /* 397 */,
 /* 398 */,
 /* 399 */,
@@ -1434,14 +1434,14 @@
 /* 434 */,
 /* 435 */,
 /* 436 */,
-/* 437 */
+/* 437 */,
+/* 438 */,
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(3, function(require) {\n\t\tcb(__webpack_require__(438));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserList!./views/containers/admin/user/List.js\n ** module id = 437\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/List.js?./~/bundle-loader?lazy&name=UserList");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(3, function(require) {\n\t\tcb(__webpack_require__(440));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserList!./views/containers/admin/user/List.js\n ** module id = 439\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/List.js?./~/bundle-loader?lazy&name=UserList");
 
 /***/ },
-/* 438 */,
-/* 439 */,
 /* 440 */,
 /* 441 */,
 /* 442 */,
@@ -1476,14 +1476,14 @@
 /* 471 */,
 /* 472 */,
 /* 473 */,
-/* 474 */
+/* 474 */,
+/* 475 */,
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(4, function(require) {\n\t\tcb(__webpack_require__(475));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserForm!./views/containers/admin/user/Form.js\n ** module id = 474\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/Form.js?./~/bundle-loader?lazy&name=UserForm");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(4, function(require) {\n\t\tcb(__webpack_require__(477));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserForm!./views/containers/admin/user/Form.js\n ** module id = 476\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/Form.js?./~/bundle-loader?lazy&name=UserForm");
 
 /***/ },
-/* 475 */,
-/* 476 */,
 /* 477 */,
 /* 478 */,
 /* 479 */,
@@ -1494,10 +1494,12 @@
 /* 484 */,
 /* 485 */,
 /* 486 */,
-/* 487 */
+/* 487 */,
+/* 488 */,
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(5, function(require) {\n\t\tcb(__webpack_require__(488));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=ClientList!./views/containers/admin/client/List.js\n ** module id = 487\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/client/List.js?./~/bundle-loader?lazy&name=ClientList");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(5, function(require) {\n\t\tcb(__webpack_require__(490));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=ClientList!./views/containers/admin/client/List.js\n ** module id = 489\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/client/List.js?./~/bundle-loader?lazy&name=ClientList");
 
 /***/ }
 /******/ ]);

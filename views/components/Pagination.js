@@ -9,9 +9,9 @@ class Pagination extends Component {
     currentPage: PropTypes.number.isRequired,
     totalPages: PropTypes.number.isRequired,
     onPageClick: PropTypes.func
-  };
+  }
 
-  render = () => {
+  render () {
     const { currentPage, totalPages, onPageClick } = this.props
     const styles = {
       footerContent: {

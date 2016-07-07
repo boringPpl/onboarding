@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
   },
   email: { type: String, unique: true, index: true, required: true },
   password: { type: String },
+  githubId: { type: String },
   roles: {
     type: [{ type: String, enum: ['admin', 'contributor', 'teacher'] }],
     default: []
@@ -15,6 +16,7 @@ const userSchema = mongoose.Schema({
 })
 
 userSchema.pre('save', function (next) {
+  if (!this.password) return next()
   bcrypt.hash(this.password, 10, (err, hash) => {
     if (err) return next(err)
     this.password = hash
