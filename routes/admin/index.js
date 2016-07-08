@@ -2,6 +2,7 @@ import express from 'express'
 import * as dashboard from './dashboard'
 import * as user from './user'
 import * as client from './client'
+import * as course from './course'
 
 const router = express.Router()
 
@@ -15,5 +16,9 @@ router.post('/users/:id', user.update)
 router.get('/users/:id/delete', user.remove)
 
 router.get('/clients', client.list)
+
+router.get('/courses', course.list)
+router.get('/courses/new', course.newCourse)
+router.post('/courses/create', course.create)
 
 export default router

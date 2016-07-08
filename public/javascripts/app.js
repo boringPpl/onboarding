@@ -13,6 +13,8 @@ const loadDashboard = require('bundle?lazy&name=Dashboard!containers/admin/Dashb
 const loadUserList = require('bundle?lazy&name=UserList!containers/admin/user/List')
 const loadUserForm = require('bundle?lazy&name=UserForm!containers/admin/user/Form')
 const loadClientList = require('bundle?lazy&name=ClientList!containers/admin/client/List')
+const loadCourseList = require('bundle?lazy&name=CourseList!containers/admin/course/List')
+const loadCourseForm = require('bundle?lazy&name=CourseForm!containers/admin/course/Form')
 
 const routes = [
   { pattern: RoutePattern.fromString('/login'), loadComponent: loadLogin },
@@ -20,7 +22,9 @@ const routes = [
   { pattern: RoutePattern.fromString('/admin/users'), loadComponent: loadUserList },
   { pattern: RoutePattern.fromString('/admin/users/new'), loadComponent: loadUserForm },
   { pattern: RoutePattern.fromString('/admin/users/:id'), loadComponent: loadUserForm },
-  { pattern: RoutePattern.fromString('/admin/clients'), loadComponent: loadClientList }
+  { pattern: RoutePattern.fromString('/admin/clients'), loadComponent: loadClientList },
+  { pattern: RoutePattern.fromString('/admin/courses'), loadComponent: loadCourseList },
+  { pattern: RoutePattern.fromString('/admin/courses/new'), loadComponent: loadCourseForm }
 ]
 
 const currentRoute = routes.find(({ pattern }) => pattern.matches(window.location.pathname))

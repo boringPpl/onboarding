@@ -8,8 +8,10 @@ import Snackbar from 'material-ui/Snackbar'
 import ActionDashboard from 'material-ui/svg-icons/action/dashboard'
 import SocialPerson from 'material-ui/svg-icons/social/person'
 import SocialPersonAdd from 'material-ui/svg-icons/social/person-add'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 import HardwarePhone from 'material-ui/svg-icons/hardware/phone-android'
 import ActionClass from 'material-ui/svg-icons/action/class'
+import ImageFlash from 'material-ui/svg-icons/image/flash-on'
 import ActionDescription from 'material-ui/svg-icons/action/description'
 import ActionExit from 'material-ui/svg-icons/action/exit-to-app'
 import App from '../App'
@@ -20,7 +22,7 @@ class Layout extends Component {
     children: PropTypes.node
   }
   state = {
-    openDrawer: false,
+    openDrawer: true,
     openSnackbar: false
   }
 
@@ -103,16 +105,40 @@ class Layout extends Component {
                 leftIcon={<HardwarePhone />}
                 onTouchTap={this._handleTapListItem}
                 data-href='/admin/clients'
+                nestedItems={[
+                  <ListItem
+                    key={1}
+                    primaryText='Add Client'
+                    leftIcon={<ContentAdd />}
+                    onTouchTap={this._handleTapListItem}
+                    data-href='/admin/clients/new'
+                  />
+                ]}
               />
             </List>
             <Divider />
             <List>
               <ListItem
-                primaryText='Learning Paths'
+                primaryText='Courses'
                 leftIcon={<ActionClass />}
+                onTouchTap={this._handleTapListItem}
+                data-href='/admin/courses'
+                nestedItems={[
+                  <ListItem
+                    key={1}
+                    primaryText='Add Course'
+                    leftIcon={<ContentAdd />}
+                    onTouchTap={this._handleTapListItem}
+                    data-href='/admin/courses/new'
+                  />
+                ]}
               />
               <ListItem
-                primaryText='Learning Nodes'
+                primaryText='Skills'
+                leftIcon={<ImageFlash />}
+              />
+              <ListItem
+                primaryText='Stories'
                 leftIcon={<ActionDescription />}
               />
             </List>

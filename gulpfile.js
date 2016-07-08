@@ -4,9 +4,10 @@ var runSequence = require('run-sequence')
 require('require-dir')('gulp-tasks')
 
 gulp.task('dev', function () {
-  return runSequence('clean', 'webpack', 'watch', 'nodemon')
+  // return runSequence('clean', 'webpack', 'watch', 'nodemon')
+  return runSequence('nodemon')
 })
 
 gulp.task('default', function (cb) {
-  return runSequence('clean', 'webpack')
+  // return runSequence('clean', 'webpack')
 })

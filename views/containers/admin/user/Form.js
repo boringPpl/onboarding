@@ -33,7 +33,7 @@ class UserForm extends Component {
                     <TextField
                       id='first_name'
                       name='first_name'
-                      hintText='First name'
+                      floatingLabelText='First name'
                       fullWidth
                       defaultValue={firstname}
                     />
@@ -42,7 +42,7 @@ class UserForm extends Component {
                     <TextField
                       id='last_name'
                       name='last_name'
-                      hintText='Last name'
+                      floatingLabelText='Last name'
                       fullWidth
                       defaultValue={lastname}
                     />
@@ -54,7 +54,7 @@ class UserForm extends Component {
                     <TextField
                       id='email'
                       name='email'
-                      hintText='Email'
+                      floatingLabelText='Email'
                       fullWidth
                       defaultValue={email}
                     />
@@ -66,7 +66,7 @@ class UserForm extends Component {
                     <TextField
                       id='password'
                       name='password'
-                      hintText='Password'
+                      floatingLabelText='Password'
                       type='password'
                       fullWidth
                     />
