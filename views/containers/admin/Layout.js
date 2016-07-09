@@ -136,6 +136,17 @@ class Layout extends Component {
               <ListItem
                 primaryText='Skills'
                 leftIcon={<ImageFlash />}
+                onTouchTap={this._handleTapListItem}
+                data-href='/admin/skills'
+                nestedItems={[
+                  <ListItem
+                    key={1}
+                    primaryText='Add Skill'
+                    leftIcon={<ContentAdd />}
+                    onTouchTap={this._handleTapListItem}
+                    data-href='/admin/skills/new'
+                  />
+                ]}
               />
               <ListItem
                 primaryText='Stories'
