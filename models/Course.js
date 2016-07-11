@@ -5,4 +5,6 @@ const courseSchema = mongoose.Schema({
   description: { type: String }
 })
 
-export default mongoose.model('Course', courseSchema)
+mongoose.model('Course', courseSchema)
+
+export default courseSchema

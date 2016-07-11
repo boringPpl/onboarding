@@ -5,4 +5,6 @@ const clientSchema = mongoose.Schema({
   clientSecret: { type: String, required: true }
 })
 
-export default mongoose.model('Client', clientSchema)
+mongoose.model('Client', clientSchema)
+
+export default clientSchema

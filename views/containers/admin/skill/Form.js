@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
+import AutoComplete from '../../../components/AutoComplete'
 import RaisedButton from 'material-ui/RaisedButton'
-import MultiSelectField from '../../../components/MultiSelectField'
 import { Row, Col } from 'react-flexbox-grid'
 import Layout from '../Layout'
 import styles from '../layout.css'
 
 class SkillForm extends Component {
   state = {
-    parent: [
-      { text: 'Toan', value: 1 },
-      { text: 'Khanh', value: 2 },
-      { text: 'XXX', value: 3 }
-    ]
+    courses: [],
+    skills: []
   }
 
-  _handleNewRequest = () => {
-
-  }
-
-  _handleRequestDelete = () => {
-
+  componentDidMount () {
+    window.fetch('/admin/api/courses')
+      .then(res => res.json())
+      .then(data => this.setState({ courses: data }))
+    window.fetch('/admin/api/skills')
+      .then(res => res.json())
+      .then(data => this.setState({ skills: data }))
   }
 
   render () {
+    const { courses, skills } = this.state
+
     return (
       <Layout {...this.props}>
         <Row>
@@ -33,8 +33,6 @@ class SkillForm extends Component {
 
             <Paper zDepth={1} style={{ padding: 16 }}>
               <form action='/admin/skills/create' method='post'>
-                <h3 className={styles.subheading}>Info</h3>
-
                 <Row>
                   <Col xs={12}>
                     <TextField
@@ -59,13 +57,30 @@ class SkillForm extends Component {
                   </Col>
                 </Row>
 
-                <h3 className={styles.subheading}>Skills</h3>
+                <Row>
+                  <Col xs={12}>
+                    <AutoComplete
+                      id='course'
+                      name='course'
+                      floatingLabelText='Course'
+                      filter={AutoComplete.caseInsensitiveFilter}
+                      dataSource={courses}
+                      dataSourceConfig={{ text: 'name', value: 'id' }}
+                      fullWidth
+                    />
+                  </Col>
+                </Row>
 
                 <Row>
                   <Col xs={12}>
-                    <MultiSelectField
+                    <AutoComplete
+                      id='parent'
                       name='parent'
-                      dataSource={this.state.parent}
+                      floatingLabelText='Parent skill'
+                      filter={AutoComplete.caseInsensitiveFilter}
+                      dataSource={skills}
+                      dataSourceConfig={{ text: 'name', value: 'id' }}
+                      fullWidth
                     />
                   </Col>
                 </Row>

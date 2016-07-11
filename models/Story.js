@@ -7,4 +7,6 @@ const storySchema = mongoose.Schema({
   skill: { type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }
 })
 
-export default mongoose.model('Story', storySchema)
+mongoose.model('Story', storySchema)
+
+export default storySchema

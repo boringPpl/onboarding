@@ -4,6 +4,7 @@ import * as user from './user'
 import * as client from './client'
 import * as course from './course'
 import * as skill from './skill'
+import * as api from './api'
 
 const router = express.Router()
 
@@ -22,7 +23,11 @@ router.get('/courses', course.list)
 router.get('/courses/new', course.newCourse)
 router.post('/courses/create', course.create)
 
+router.get('/skills', skill.list)
 router.get('/skills/new', skill.newSkill)
 router.post('/skills/create', skill.create)
+
+router.get('/api/courses', api.listCourse)
+router.get('/api/skills', api.listSkill)
 
 export default router
