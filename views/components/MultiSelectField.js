@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import TextFieldUnderline from 'material-ui/TextField/TextFieldUnderline'
+import TextFieldLabel from 'material-ui/TextField/TextFieldLabel'
 import Popover from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
@@ -15,9 +16,15 @@ class MultiSelectField extends Component {
 
   static propTypes = {
     dataSource: PropTypes.array.isRequired,
+    dataSourceConfig: PropTypes.object,
+    floatingLabelText: PropTypes.string,
     value: PropTypes.array,
     name: PropTypes.string,
     onChange: PropTypes.func
+  }
+
+  static getDefaultProps = {
+    dataSourceConfig: { text: 'text', value: 'value' }
   }
 
   state = {
@@ -35,9 +42,12 @@ class MultiSelectField extends Component {
 
   _handleInputChange = event => {
     const inputValue = event.target.value
-    const dataSource = this.props.dataSource
+    const {
+      dataSource,
+      dataSourceConfig: { text: textField }
+    } = this.props
     const filteredData = filter(dataSource, data =>
-      includes(data.text.toLowerCase(), inputValue.toLowerCase())
+      includes(data[textField].toLowerCase(), inputValue.toLowerCase())
     )
     this.setState({
       inputValue,
@@ -60,8 +70,9 @@ class MultiSelectField extends Component {
 
   _handleMenuItemTouchTap = (event, item, index) => {
     const { value, filteredData } = this.state
+    const valueField = this.props.dataSourceConfig.value
     this.setState({
-      value: unionBy(value, [filteredData[index]], 'value'),
+      value: unionBy(value, [filteredData[index]], valueField),
       inputValue: '',
       menuFocused: false,
       menuOpened: false
@@ -69,7 +80,7 @@ class MultiSelectField extends Component {
   }
 
   _handleChipDelete = value => this.setState({
-    value: filter(this.state.value, data => data.value !== value)
+    value: filter(this.state.value, data => data[this.props.dataSourceConfig.value] !== value)
   })
 
   render () {
@@ -81,12 +92,17 @@ class MultiSelectField extends Component {
       menuFocused,
       menuOpened
     } = this.state
-    const { name } = this.props
+    const {
+      name,
+      floatingLabelText,
+      dataSourceConfig: { text: textField, value: valueField }
+    } = this.props
 
     const width = this.wrapper && this.wrapper.offsetWidth
     const styles = {
       wrapper: {
         position: 'relative',
+        paddingTop: 39,
         paddingBottom: 13,
         fontSize: 16,
         lineHeight: 24
@@ -120,14 +136,32 @@ class MultiSelectField extends Component {
 
     return (
       <div ref={node => { this.wrapper = node }} style={styles.wrapper}>
+        <TextFieldLabel
+          shrink={inputFocused || menuFocused || !!value.length}
+          muiTheme={this.context.muiTheme}
+          style={{
+            color: do {
+              if (inputFocused || menuFocused) {
+                this.context.muiTheme.textField.focusColor
+              } else if (value.length) {
+                'rgba(0, 0, 0, 0.5)'
+              } else {
+                'rgba(0, 0, 0, 0.3)'
+              }
+            }
+          }}
+        >
+          {floatingLabelText}
+        </TextFieldLabel>
+
         <label style={styles.label}>
           {value.map(data =>
             <Chip
-              key={data.value}
-              onRequestDelete={this._handleChipDelete.bind(null, data.value)}
+              key={data[valueField]}
+              onRequestDelete={this._handleChipDelete.bind(null, data[valueField])}
               style={styles.chip}
             >
-              {data.text}
+              {data[textField]}
             </Chip>
           )}
 
@@ -161,16 +195,16 @@ class MultiSelectField extends Component {
           >
             {filteredData.map(data =>
               <MenuItem
-                key={data.value}
-                value={data.value}
-                primaryText={data.text}
+                key={data[valueField]}
+                value={data[valueField]}
+                primaryText={data[textField]}
                 style={styles.menuItem}
               />
             )}
           </Menu>
         </Popover>
 
-        {value.map(data => <input key={data.value} type='hidden' name={name} value={data.value} />)}
+        {value.map(data => <input key={data[valueField]} type='hidden' name={name} value={data[valueField]} />)}
       </div>
     )
   }

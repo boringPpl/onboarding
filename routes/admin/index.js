@@ -4,6 +4,7 @@ import * as user from './user'
 import * as client from './client'
 import * as course from './course'
 import * as skill from './skill'
+import * as story from './story'
 import * as api from './api'
 
 const router = express.Router()
@@ -27,7 +28,12 @@ router.get('/skills', skill.list)
 router.get('/skills/new', skill.newSkill)
 router.post('/skills/create', skill.create)
 
+router.get('/stories', story.list)
+router.get('/stories/new', story.newStory)
+router.post('/stories/create', story.create)
+
 router.get('/api/courses', api.listCourse)
+router.get('/api/stories', api.listStory)
 router.get('/api/skills', api.listSkill)
 
 export default router

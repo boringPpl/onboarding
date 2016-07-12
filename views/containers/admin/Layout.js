@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
 import { List, ListItem } from 'material-ui/List'
+import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 import IconButton from 'material-ui/IconButton'
 import Snackbar from 'material-ui/Snackbar'
@@ -14,6 +15,9 @@ import ActionClass from 'material-ui/svg-icons/action/class'
 import ImageFlash from 'material-ui/svg-icons/image/flash-on'
 import ActionDescription from 'material-ui/svg-icons/action/description'
 import ActionExit from 'material-ui/svg-icons/action/exit-to-app'
+import SocialNotifications from 'material-ui/svg-icons/social/notifications'
+import ActionAssignment from 'material-ui/svg-icons/action/assignment-turned-in'
+import MapsActivity from 'material-ui/svg-icons/maps/local-activity'
 import App from '../App'
 import styles from './layout.css'
 
@@ -63,20 +67,31 @@ class Layout extends Component {
           <AppBar
             title='hasBrain CMS'
             onLeftIconButtonTouchTap={this._handleToggleDrawer}
-            iconElementRight={
-              <IconButton
-                linkButton
-                href='/logout'
-              >
-                <ActionExit />
-              </IconButton>
-            }
-            titleStyle={{ fontWeight: 300 }}
-          />
+            titleStyle={{ fontSize: 19.5, fontWeight: 300 }}
+          >
+            <IconButton
+              style={{ marginTop: 8 }}
+            >
+              <SocialNotifications color='white' />
+            </IconButton>
+            <IconButton
+              linkButton
+              href='/logout'
+              style={{ marginTop: 8, marginRight: -16 }}
+            >
+              <ActionExit color='white' />
+            </IconButton>
+          </AppBar>
 
           <Drawer
             open={openDrawer}
-            containerStyle={{ top: 64 }}
+            containerStyle={{
+              top: 64,
+              paddingLeft: 8,
+              paddingRight: 8,
+              background: 'transparent',
+              boxShadow: 'none'
+            }}
           >
             <List>
               <ListItem
@@ -118,6 +133,7 @@ class Layout extends Component {
             </List>
             <Divider />
             <List>
+              <Subheader>Contents</Subheader>
               <ListItem
                 primaryText='Courses'
                 leftIcon={<ActionClass />}
@@ -151,6 +167,35 @@ class Layout extends Component {
               <ListItem
                 primaryText='Stories'
                 leftIcon={<ActionDescription />}
+                onTouchTap={this._handleTapListItem}
+                data-href='/admin/stories'
+                nestedItems={[
+                  <ListItem
+                    key={1}
+                    primaryText='Add Story'
+                    leftIcon={<ContentAdd />}
+                    onTouchTap={this._handleTapListItem}
+                    data-href='/admin/stories/new'
+                  />
+                ]}
+              />
+            </List>
+
+            <Divider />
+
+            <List>
+              <Subheader>User Data</Subheader>
+              <ListItem
+                primaryText='Enrollments'
+                leftIcon={<ActionAssignment />}
+                onTouchTap={this._handleTapListItem}
+                data-href='/admin/courses'
+              />
+              <ListItem
+                primaryText='Activities'
+                leftIcon={<MapsActivity />}
+                onTouchTap={this._handleTapListItem}
+                data-href='/admin/skills'
               />
             </List>
           </Drawer>

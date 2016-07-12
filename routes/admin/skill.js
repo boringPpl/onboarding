@@ -16,7 +16,6 @@ const skillPresenter = {
 export async function list (req, res, next) {
   try {
     let skills = await Skill.find().populate('course parent').exec()
-    console.log(skills)
     const initialData = {
       error: req.flash('error'),
       skills: skills.map(skill => process(skill, skillPresenter))
@@ -44,7 +43,7 @@ export async function create (req, res, next) {
   try {
     let { name, description, course, parent } = req.body
     await Skill.create({ name, description, course, parent })
-    res.redirect('/admin/skills/new')
+    res.redirect('/admin/skills')
   } catch (err) {
     req.flash('error', err.message)
     res.redirect('back')

@@ -17,6 +17,8 @@ const loadCourseList = require('bundle?lazy&name=CourseList!containers/admin/cou
 const loadCourseForm = require('bundle?lazy&name=CourseForm!containers/admin/course/Form')
 const loadSkillList = require('bundle?lazy&name=SkillList!containers/admin/skill/List')
 const loadSkillForm = require('bundle?lazy&name=SkillForm!containers/admin/skill/Form')
+const loadStoryList = require('bundle?lazy&name=StoryList!containers/admin/story/List')
+const loadStoryForm = require('bundle?lazy&name=StoryForm!containers/admin/story/Form')
 
 const routes = [
   { pattern: RoutePattern.fromString('/login'), loadComponent: loadLogin },
@@ -32,7 +34,10 @@ const routes = [
   { pattern: RoutePattern.fromString('/admin/courses/new'), loadComponent: loadCourseForm },
 
   { pattern: RoutePattern.fromString('/admin/skills'), loadComponent: loadSkillList },
-  { pattern: RoutePattern.fromString('/admin/skills/new'), loadComponent: loadSkillForm }
+  { pattern: RoutePattern.fromString('/admin/skills/new'), loadComponent: loadSkillForm },
+
+  { pattern: RoutePattern.fromString('/admin/stories'), loadComponent: loadStoryList },
+  { pattern: RoutePattern.fromString('/admin/stories/new'), loadComponent: loadStoryForm }
 ]
 
 const currentRoute = routes.find(({ pattern }) => pattern.matches(window.location.pathname))
