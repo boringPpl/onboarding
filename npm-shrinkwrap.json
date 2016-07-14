@@ -1302,8 +1302,13 @@
     },
     "d3-selection": {
       "version": "1.0.0",
-      "from": "d3-selection@1.0.0",
+      "from": "d3-selection@latest",
       "resolved": "https://registry.npmjs.org/d3-selection/-/d3-selection-1.0.0.tgz"
+    },
+    "d3-selection-multi": {
+      "version": "0.4.1",
+      "from": "d3-selection-multi@latest",
+      "resolved": "https://registry.npmjs.org/d3-selection-multi/-/d3-selection-multi-0.4.1.tgz"
     },
     "d3-shape": {
       "version": "1.0.0",

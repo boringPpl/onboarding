@@ -32,6 +32,8 @@
     "css-loader": "^0.23.1",
     "css-modules-require-hook": "^4.0.1",
     "d3": "^4.0.0",
+    "d3-selection": "^1.0.0",
+    "d3-selection-multi": "^0.4.1",
     "debug": "~2.2.0",
     "del": "^2.2.0",
     "dotenv": "^2.0.0",
