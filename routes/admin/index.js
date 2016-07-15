@@ -13,9 +13,9 @@ router.get('/', dashboard.index)
 
 router.get('/users', user.list)
 router.get('/users/new', user.newUser)
-router.post('/users', user.create)
 router.get('/users/:id', user.get)
-router.post('/users/:id', user.update)
+router.post('/users/create', user.create)
+router.post('/users/:id/update', user.update)
 router.get('/users/:id/delete', user.remove)
 
 router.get('/clients', client.list)
