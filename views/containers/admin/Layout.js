@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import AppBar from 'material-ui/AppBar'
+import IconButton from 'material-ui/IconButton'
 import Drawer from 'material-ui/Drawer'
 import { List, ListItem } from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
-import IconButton from 'material-ui/IconButton'
-import Snackbar from 'material-ui/Snackbar'
+
 import ActionDashboard from 'material-ui/svg-icons/action/dashboard'
 import SocialPerson from 'material-ui/svg-icons/social/person'
 import SocialPersonAdd from 'material-ui/svg-icons/social/person-add'
@@ -18,7 +18,9 @@ import ActionExit from 'material-ui/svg-icons/action/exit-to-app'
 import SocialNotifications from 'material-ui/svg-icons/social/notifications'
 import ActionAssignment from 'material-ui/svg-icons/action/assignment-turned-in'
 import MapsActivity from 'material-ui/svg-icons/maps/local-activity'
+
 import App from '../App'
+import Notification from '../../components/Notification'
 import styles from './layout.css'
 
 class Layout extends Component {
@@ -26,29 +28,21 @@ class Layout extends Component {
     children: PropTypes.node
   }
   state = {
-    openDrawer: true,
-    openSnackbar: false
+    openDrawer: true
   }
 
   componentDidMount () {
     setTimeout(() => {
-      this.setState({
-        openSnackbar: !!this.props.data.error.length
-      })
+      const error = this.props.data.error
+      if (error.length) {
+        this.notification.show('error', error[0])
+      }
     }, 0)
   }
 
-  _handleRequestClose = () => {
-    this.setState({
-      openSnackbar: false
-    })
-  }
-
-  _handleToggleDrawer = () => {
-    this.setState({
-      openDrawer: !this.state.openDrawer
-    })
-  }
+  _handleToggleDrawer = _ => this.setState({
+    openDrawer: !this.state.openDrawer
+  })
 
   _handleTapListItem = (e) => {
     const href = e.currentTarget.dataset.href
@@ -58,8 +52,7 @@ class Layout extends Component {
   }
 
   render () {
-    const { openDrawer, openSnackbar } = this.state
-    const { error } = this.props.data
+    const { openDrawer } = this.state
 
     return (
       <App>
@@ -86,6 +79,7 @@ class Layout extends Component {
           <Drawer
             open={openDrawer}
             containerStyle={{
+              position: 'absolute',
               top: 64,
               paddingLeft: 8,
               paddingRight: 8,
@@ -131,7 +125,9 @@ class Layout extends Component {
                 ]}
               />
             </List>
+
             <Divider />
+
             <List>
               <Subheader>Contents</Subheader>
               <ListItem
@@ -206,13 +202,7 @@ class Layout extends Component {
             {this.props.children}
           </div>
 
-          <Snackbar
-            bodyStyle={{ maxWidth: 288 }}
-            open={openSnackbar}
-            message={error[0] || ''}
-            autoHideDuration={4000}
-            onRequestClose={this._handleRequestClose}
-          />
+          <Notification ref={node => { this.notification = node }} />
         </div>
       </App>
     )

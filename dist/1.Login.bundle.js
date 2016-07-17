@@ -2,7 +2,7 @@ webpackJsonp([1],Array(185).concat([
 /* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Paper = __webpack_require__(186);\n\nvar _Paper2 = _interopRequireDefault(_Paper);\n\nvar _TextField = __webpack_require__(191);\n\nvar _TextField2 = _interopRequireDefault(_TextField);\n\nvar _RaisedButton = __webpack_require__(203);\n\nvar _RaisedButton2 = _interopRequireDefault(_RaisedButton);\n\nvar _Snackbar = __webpack_require__(220);\n\nvar _Snackbar2 = _interopRequireDefault(_Snackbar);\n\nvar _SvgIcon = __webpack_require__(228);\n\nvar _SvgIcon2 = _interopRequireDefault(_SvgIcon);\n\nvar _App = __webpack_require__(230);\n\nvar _App2 = _interopRequireDefault(_App);\n\nvar _login = __webpack_require__(177);\n\nvar _login2 = _interopRequireDefault(_login);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar GithubIcon = function GithubIcon(props) {\n  return _react2.default.createElement(\n    _SvgIcon2.default,\n    _extends({ viewBox: '0 0 32 32' }, props),\n    _react2.default.createElement('path', { d: 'M16.003,0C7.17,0,0.008,7.162,0.008,15.997  c0,7.067,4.582,13.063,10.94,15.179c0.8,0.146,1.052-0.328,1.052-0.752c0-0.38,0.008-1.442,0-2.777  c-4.449,0.967-5.371-2.107-5.371-2.107c-0.727-1.848-1.775-2.34-1.775-2.34c-1.452-0.992,0.109-0.973,0.109-0.973  c1.605,0.113,2.451,1.649,2.451,1.649c1.427,2.443,3.743,1.737,4.654,1.329c0.146-1.034,0.56-1.739,1.017-2.139  c-3.552-0.404-7.286-1.776-7.286-7.906c0-1.747,0.623-3.174,1.646-4.292C7.28,10.464,6.73,8.837,7.602,6.634  c0,0,1.343-0.43,4.398,1.641c1.276-0.355,2.645-0.532,4.005-0.538c1.359,0.006,2.727,0.183,4.005,0.538  c3.055-2.07,4.396-1.641,4.396-1.641c0.872,2.203,0.323,3.83,0.159,4.234c1.023,1.118,1.644,2.545,1.644,4.292  c0,6.146-3.74,7.498-7.304,7.893C19.479,23.548,20,24.508,20,26c0,2,0,3.902,0,4.428c0,0.428,0.258,0.901,1.07,0.746  C27.422,29.055,32,23.062,32,15.997C32,7.162,24.838,0,16.003,0z' })\n  );\n};\n\nvar Login = function (_Component) {\n  _inherits(Login, _Component);\n\n  function Login(props) {\n    _classCallCheck(this, Login);\n\n    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Login).call(this, props));\n\n    _this._handleRequestClose = function () {\n      _this.setState({\n        open: false\n      });\n    };\n\n    _this.state = {\n      open: false\n    };\n    return _this;\n  }\n\n  _createClass(Login, [{\n    key: 'componentDidMount',\n    value: function componentDidMount() {\n      var _this2 = this;\n\n      setTimeout(function () {\n        _this2.setState({\n          open: !!_this2.props.data.error.length\n        });\n      }, 0);\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      var error = this.props.data.error;\n\n\n      return _react2.default.createElement(\n        _App2.default,\n        null,\n        _react2.default.createElement(\n          'div',\n          { className: _login2.default.wrapper },\n          _react2.default.createElement(\n            _Paper2.default,\n            { zDepth: 1, className: _login2.default.dialog },\n            _react2.default.createElement('img', { src: 'logo-notext.png', className: _login2.default.logo }),\n            _react2.default.createElement('br', null),\n            _react2.default.createElement(\n              'form',\n              { method: 'post', action: '/login' },\n              _react2.default.createElement(_TextField2.default, {\n                id: 'email',\n                name: 'email',\n                hintText: 'Email',\n                fullWidth: true\n              }),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement(_TextField2.default, {\n                id: 'password',\n                name: 'password',\n                type: 'password',\n                hintText: 'Password',\n                fullWidth: true\n              }),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement(_RaisedButton2.default, {\n                type: 'submit',\n                label: 'Login',\n                secondary: true,\n                style: { width: '100%' }\n              })\n            ),\n            _react2.default.createElement('br', null),\n            _react2.default.createElement(\n              'p',\n              { className: _login2.default.text },\n              _react2.default.createElement(\n                'small',\n                null,\n                'Sign up for alpha? Contact us ',\n                _react2.default.createElement(\n                  'a',\n                  { href: '#' },\n                  'here'\n                )\n              ),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement(\n                'small',\n                null,\n                'or'\n              )\n            ),\n            _react2.default.createElement(_RaisedButton2.default, {\n              label: 'Login with Github',\n              style: { width: '100%' },\n              backgroundColor: '#333',\n              labelColor: 'white',\n              linkButton: true,\n              href: '/auth/github',\n              icon: _react2.default.createElement(GithubIcon, { style: { width: 24, height: 24 }, color: 'white' })\n            })\n          ),\n          _react2.default.createElement(\n            'p',\n            { className: _login2.default.text },\n            _react2.default.createElement(\n              'small',\n              null,\n              '© 2014 hasBrain'\n            )\n          ),\n          _react2.default.createElement(_Snackbar2.default, {\n            bodyStyle: { maxWidth: 288 },\n            open: this.state.open,\n            message: error[0] || '',\n            autoHideDuration: 4000,\n            onRequestClose: this._handleRequestClose\n          })\n        )\n      );\n    }\n  }]);\n\n  return Login;\n}(_react.Component);\n\nLogin.propTypes = {\n  data: _react.PropTypes.object\n};\nexports.default = Login;\nmodule.exports = exports['default'];\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/babel-loader!./views/containers/Login.js\n ** module id = 185\n ** module chunks = 1\n **/\n//# sourceURL=webpack:///./views/containers/Login.js?./~/babel-loader");
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Paper = __webpack_require__(186);\n\nvar _Paper2 = _interopRequireDefault(_Paper);\n\nvar _TextField = __webpack_require__(191);\n\nvar _TextField2 = _interopRequireDefault(_TextField);\n\nvar _RaisedButton = __webpack_require__(203);\n\nvar _RaisedButton2 = _interopRequireDefault(_RaisedButton);\n\nvar _SvgIcon = __webpack_require__(228);\n\nvar _SvgIcon2 = _interopRequireDefault(_SvgIcon);\n\nvar _App = __webpack_require__(230);\n\nvar _App2 = _interopRequireDefault(_App);\n\nvar _Notification = __webpack_require__(587);\n\nvar _Notification2 = _interopRequireDefault(_Notification);\n\nvar _login = __webpack_require__(177);\n\nvar _login2 = _interopRequireDefault(_login);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar GithubIcon = function GithubIcon(props) {\n  return _react2.default.createElement(\n    _SvgIcon2.default,\n    _extends({ viewBox: '0 0 32 32' }, props),\n    _react2.default.createElement('path', { d: 'M16.003,0C7.17,0,0.008,7.162,0.008,15.997  c0,7.067,4.582,13.063,10.94,15.179c0.8,0.146,1.052-0.328,1.052-0.752c0-0.38,0.008-1.442,0-2.777  c-4.449,0.967-5.371-2.107-5.371-2.107c-0.727-1.848-1.775-2.34-1.775-2.34c-1.452-0.992,0.109-0.973,0.109-0.973  c1.605,0.113,2.451,1.649,2.451,1.649c1.427,2.443,3.743,1.737,4.654,1.329c0.146-1.034,0.56-1.739,1.017-2.139  c-3.552-0.404-7.286-1.776-7.286-7.906c0-1.747,0.623-3.174,1.646-4.292C7.28,10.464,6.73,8.837,7.602,6.634  c0,0,1.343-0.43,4.398,1.641c1.276-0.355,2.645-0.532,4.005-0.538c1.359,0.006,2.727,0.183,4.005,0.538  c3.055-2.07,4.396-1.641,4.396-1.641c0.872,2.203,0.323,3.83,0.159,4.234c1.023,1.118,1.644,2.545,1.644,4.292  c0,6.146-3.74,7.498-7.304,7.893C19.479,23.548,20,24.508,20,26c0,2,0,3.902,0,4.428c0,0.428,0.258,0.901,1.07,0.746  C27.422,29.055,32,23.062,32,15.997C32,7.162,24.838,0,16.003,0z' })\n  );\n};\n\nvar Login = function (_Component) {\n  _inherits(Login, _Component);\n\n  function Login() {\n    _classCallCheck(this, Login);\n\n    return _possibleConstructorReturn(this, Object.getPrototypeOf(Login).apply(this, arguments));\n  }\n\n  _createClass(Login, [{\n    key: 'componentDidMount',\n    value: function componentDidMount() {\n      var _this2 = this;\n\n      setTimeout(function () {\n        var error = _this2.props.data.error;\n        if (error.length) {\n          _this2.notification.show('error', error[0]);\n        }\n      }, 0);\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      var _this3 = this;\n\n      return _react2.default.createElement(\n        _App2.default,\n        null,\n        _react2.default.createElement(\n          'div',\n          { className: _login2.default.wrapper },\n          _react2.default.createElement(\n            _Paper2.default,\n            { zDepth: 1, className: _login2.default.dialog },\n            _react2.default.createElement('img', { src: 'logo-notext.png', className: _login2.default.logo }),\n            _react2.default.createElement('br', null),\n            _react2.default.createElement(\n              'form',\n              { method: 'post', action: '/login' },\n              _react2.default.createElement(_TextField2.default, {\n                id: 'email',\n                name: 'email',\n                hintText: 'Email',\n                fullWidth: true\n              }),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement(_TextField2.default, {\n                id: 'password',\n                name: 'password',\n                type: 'password',\n                hintText: 'Password',\n                fullWidth: true\n              }),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement(_RaisedButton2.default, {\n                type: 'submit',\n                label: 'Login',\n                secondary: true,\n                style: { width: '100%' }\n              })\n            ),\n            _react2.default.createElement('br', null),\n            _react2.default.createElement(\n              'p',\n              { className: _login2.default.text },\n              _react2.default.createElement(\n                'small',\n                null,\n                'Sign up for alpha? Contact us ',\n                _react2.default.createElement(\n                  'a',\n                  { href: '#' },\n                  'here'\n                )\n              ),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement(\n                'small',\n                null,\n                'or'\n              )\n            ),\n            _react2.default.createElement(_RaisedButton2.default, {\n              label: 'Login with Github',\n              style: { width: '100%' },\n              backgroundColor: '#333',\n              labelColor: 'white',\n              linkButton: true,\n              href: '/auth/github',\n              icon: _react2.default.createElement(GithubIcon, { style: { width: 24, height: 24 }, color: 'white' })\n            })\n          ),\n          _react2.default.createElement(\n            'p',\n            { className: _login2.default.text },\n            _react2.default.createElement(\n              'small',\n              null,\n              '© 2014 hasBrain'\n            )\n          ),\n          _react2.default.createElement(_Notification2.default, { ref: function ref(node) {\n              _this3.notification = node;\n            } })\n        )\n      );\n    }\n  }]);\n\n  return Login;\n}(_react.Component);\n\nLogin.propTypes = {\n  data: _react.PropTypes.object\n};\nexports.default = Login;\nmodule.exports = exports['default'];\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/babel-loader!./views/containers/Login.js\n ** module id = 185\n ** module chunks = 1\n **/\n//# sourceURL=webpack:///./views/containers/Login.js?./~/babel-loader");
 
 /***/ },
 /* 186 */
@@ -1263,6 +1263,255 @@ webpackJsonp([1],Array(185).concat([
 /***/ function(module, exports) {
 
 	eval("/**\n * Copyright 2013-2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule keyOf\n */\n\n/**\n * Allows extraction of a minified key. Let's the build system minify keys\n * without losing the ability to dynamically use key strings as values\n * themselves. Pass in an object with a single key/val pair and it will return\n * you the string key of that single record. Suppose you want to grab the\n * value for a key 'className' inside of an object. Key/val minification may\n * have aliased that key to be 'xa12'. keyOf({className: null}) will return\n * 'xa12' in that case. Resolve keys you want to use once at startup time, then\n * reuse those resolutions.\n */\n\"use strict\";\n\nvar keyOf = function (oneKeyObj) {\n  var key;\n  for (key in oneKeyObj) {\n    if (!oneKeyObj.hasOwnProperty(key)) {\n      continue;\n    }\n    return key;\n  }\n  return null;\n};\n\nmodule.exports = keyOf;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/react-tap-event-plugin/~/fbjs/lib/keyOf.js\n ** module id = 395\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/react-tap-event-plugin/~/fbjs/lib/keyOf.js?");
+
+/***/ },
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nexports.__esModule = true;\n\nvar _shouldUpdate = __webpack_require__(403);\n\nvar _shouldUpdate2 = _interopRequireDefault(_shouldUpdate);\n\nvar _shallowEqual = __webpack_require__(194);\n\nvar _shallowEqual2 = _interopRequireDefault(_shallowEqual);\n\nvar _createHelper = __webpack_require__(404);\n\nvar _createHelper2 = _interopRequireDefault(_createHelper);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar pure = (0, _shouldUpdate2.default)(function (props, nextProps) {\n  return !(0, _shallowEqual2.default)(props, nextProps);\n});\n\nexports.default = (0, _createHelper2.default)(pure, 'pure', true, true);\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/recompose/pure.js\n ** module id = 402\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/recompose/pure.js?");
+
+/***/ },
+/* 403 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nexports.__esModule = true;\n\nvar _react = __webpack_require__(1);\n\nvar _createHelper = __webpack_require__(404);\n\nvar _createHelper2 = _interopRequireDefault(_createHelper);\n\nvar _createElement = __webpack_require__(407);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar shouldUpdate = function shouldUpdate(test) {\n  return function (BaseComponent) {\n    var createElement = (0, _createElement.internalCreateElement)(BaseComponent);\n    return function (_Component) {\n      _inherits(_class, _Component);\n\n      function _class() {\n        _classCallCheck(this, _class);\n\n        return _possibleConstructorReturn(this, _Component.apply(this, arguments));\n      }\n\n      _class.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {\n        return test(this.props, nextProps);\n      };\n\n      _class.prototype.render = function render() {\n        return createElement(this.props);\n      };\n\n      return _class;\n    }(_react.Component);\n  };\n};\n\nexports.default = (0, _createHelper2.default)(shouldUpdate, 'shouldUpdate');\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/recompose/shouldUpdate.js\n ** module id = 403\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/recompose/shouldUpdate.js?");
+
+/***/ },
+/* 404 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nexports.__esModule = true;\nvar createHelper = function createHelper(func, helperName) {\n  var setDisplayName = arguments.length <= 2 || arguments[2] === undefined ? true : arguments[2];\n  var noArgs = arguments.length <= 3 || arguments[3] === undefined ? false : arguments[3];\n\n  if ((\"development\") !== 'production' && setDisplayName) {\n    var _ret = function () {\n      var wrapDisplayName = __webpack_require__(405).default;\n\n      if (noArgs) {\n        return {\n          v: function v(BaseComponent) {\n            var Component = func(BaseComponent);\n            Component.displayName = wrapDisplayName(BaseComponent, helperName);\n            return Component;\n          }\n        };\n      }\n\n      return {\n        v: function v() {\n          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {\n            args[_key] = arguments[_key];\n          }\n\n          if (args.length > func.length) {\n            /* eslint-disable */\n            console.error(\n            /* eslint-enable */\n            'Too many arguments passed to ' + helperName + '(). It should called ' + ('like so: ' + helperName + '(...args)(BaseComponent).'));\n          }\n\n          return function (BaseComponent) {\n            var Component = func.apply(undefined, args)(BaseComponent);\n            Component.displayName = wrapDisplayName(BaseComponent, helperName);\n            return Component;\n          };\n        }\n      };\n    }();\n\n    if (typeof _ret === \"object\") return _ret.v;\n  }\n\n  return func;\n};\n\nexports.default = createHelper;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/recompose/createHelper.js\n ** module id = 404\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/recompose/createHelper.js?");
+
+/***/ },
+/* 405 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nexports.__esModule = true;\n\nvar _getDisplayName = __webpack_require__(406);\n\nvar _getDisplayName2 = _interopRequireDefault(_getDisplayName);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar wrapDisplayName = function wrapDisplayName(BaseComponent, hocName) {\n  return hocName + '(' + (0, _getDisplayName2.default)(BaseComponent) + ')';\n};\n\nexports.default = wrapDisplayName;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/recompose/wrapDisplayName.js\n ** module id = 405\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/recompose/wrapDisplayName.js?");
+
+/***/ },
+/* 406 */
+/***/ function(module, exports) {
+
+	eval("'use strict';\n\nexports.__esModule = true;\nvar getDisplayName = function getDisplayName(Component) {\n  if (typeof Component === 'string') {\n    return Component;\n  }\n\n  if (!Component) {\n    return undefined;\n  }\n\n  return Component.displayName || Component.name || 'Component';\n};\n\nexports.default = getDisplayName;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/recompose/getDisplayName.js\n ** module id = 406\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/recompose/getDisplayName.js?");
+
+/***/ },
+/* 407 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nexports.__esModule = true;\nexports.internalCreateElement = undefined;\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _isReferentiallyTransparentFunctionComponent = __webpack_require__(408);\n\nvar _isReferentiallyTransparentFunctionComponent2 = _interopRequireDefault(_isReferentiallyTransparentFunctionComponent);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar _createElement = function _createElement(hasKey, isReferentiallyTransparent, Component, props, children) {\n  if (!hasKey && isReferentiallyTransparent) {\n    var component = Component;\n    if (children) {\n      return component(_extends({}, props, { children: children }));\n    }\n    return component(props);\n  }\n\n  if (children) {\n    return _react2.default.createElement(\n      Component,\n      props,\n      children\n    );\n  }\n\n  return _react2.default.createElement(Component, props);\n};\n\nvar internalCreateElement = exports.internalCreateElement = function internalCreateElement(Component) {\n  var isReferentiallyTransparent = (0, _isReferentiallyTransparentFunctionComponent2.default)(Component);\n  return function (p, c) {\n    return _createElement(false, isReferentiallyTransparent, Component, p, c);\n  };\n};\n\nvar createElement = function createElement(Component, props, children) {\n  var isReferentiallyTransparent = (0, _isReferentiallyTransparentFunctionComponent2.default)(Component);\n  /* eslint-disable */\n  var hasKey = props && props.hasOwnProperty('key');\n  /* eslint-enable */\n  return _createElement(hasKey, isReferentiallyTransparent, Component, props, children);\n};\n\nexports.default = createElement;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/recompose/createElement.js\n ** module id = 407\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/recompose/createElement.js?");
+
+/***/ },
+/* 408 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nexports.__esModule = true;\n\nvar _isClassComponent = __webpack_require__(409);\n\nvar _isClassComponent2 = _interopRequireDefault(_isClassComponent);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar isReferentiallyTransparentFunctionComponent = function isReferentiallyTransparentFunctionComponent(Component) {\n  return Boolean(typeof Component === 'function' && !(0, _isClassComponent2.default)(Component) && !Component.defaultProps && !Component.contextTypes && !Component.propTypes);\n};\n\nexports.default = isReferentiallyTransparentFunctionComponent;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/recompose/isReferentiallyTransparentFunctionComponent.js\n ** module id = 408\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/recompose/isReferentiallyTransparentFunctionComponent.js?");
+
+/***/ },
+/* 409 */
+/***/ function(module, exports) {
+
+	eval("'use strict';\n\nexports.__esModule = true;\nvar isClassComponent = function isClassComponent(Component) {\n  return Boolean(Component && Component.prototype && typeof Component.prototype.isReactComponent === 'object');\n};\n\nexports.default = isClassComponent;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/recompose/isClassComponent.js\n ** module id = 409\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/recompose/isClassComponent.js?");
+
+/***/ },
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */,
+/* 520 */,
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */,
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */,
+/* 536 */,
+/* 537 */,
+/* 538 */,
+/* 539 */,
+/* 540 */,
+/* 541 */,
+/* 542 */,
+/* 543 */,
+/* 544 */,
+/* 545 */,
+/* 546 */,
+/* 547 */,
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */,
+/* 552 */,
+/* 553 */,
+/* 554 */,
+/* 555 */,
+/* 556 */,
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */,
+/* 563 */,
+/* 564 */,
+/* 565 */,
+/* 566 */,
+/* 567 */,
+/* 568 */,
+/* 569 */,
+/* 570 */,
+/* 571 */,
+/* 572 */,
+/* 573 */,
+/* 574 */,
+/* 575 */,
+/* 576 */,
+/* 577 */,
+/* 578 */,
+/* 579 */,
+/* 580 */,
+/* 581 */,
+/* 582 */,
+/* 583 */,
+/* 584 */,
+/* 585 */,
+/* 586 */,
+/* 587 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Snackbar = __webpack_require__(220);\n\nvar _Snackbar2 = _interopRequireDefault(_Snackbar);\n\nvar _error = __webpack_require__(588);\n\nvar _error2 = _interopRequireDefault(_error);\n\nvar _checkCircle = __webpack_require__(589);\n\nvar _checkCircle2 = _interopRequireDefault(_checkCircle);\n\nvar _colors = __webpack_require__(349);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar Notification = function (_Component) {\n  _inherits(Notification, _Component);\n\n  function Notification(props) {\n    _classCallCheck(this, Notification);\n\n    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Notification).call(this, props));\n\n    _this.show = function (type, message) {\n      return _this.setState({\n        open: true,\n        type: type,\n        message: message\n      });\n    };\n\n    _this._handleRequestClose = function (_) {\n      return _this.setState({\n        open: false\n      });\n    };\n\n    _this.state = {\n      open: false,\n      type: null,\n      message: null\n    };\n    return _this;\n  }\n\n  _createClass(Notification, [{\n    key: 'render',\n    value: function render() {\n      var _state = this.state;\n      var open = _state.open;\n      var type = _state.type;\n      var message = _state.message;\n\n      var styles = {\n        wrapper: {\n          display: 'flex',\n          alignItems: 'center'\n        },\n        icon: {\n          marginRight: 8\n        }\n      };\n\n      return _react2.default.createElement(_Snackbar2.default, {\n        open: open,\n        message: _react2.default.createElement(\n          'div',\n          { style: styles.wrapper },\n          type === 'error' ? _react2.default.createElement(_error2.default, { color: _colors.red500, style: styles.icon }) : type === 'success' ? _react2.default.createElement(_checkCircle2.default, { color: _colors.green500, style: styles.icon }) : void 0,\n          message\n        ),\n        autoHideDuration: 5000,\n        onRequestClose: this._handleRequestClose,\n        bodyStyle: { maxWidth: 288 }\n      });\n    }\n  }]);\n\n  return Notification;\n}(_react.Component);\n\nexports.default = Notification;\nmodule.exports = exports['default'];\n\n/*****************\n ** WEBPACK FOOTER\n ** ./views/components/Notification.js\n ** module id = 587\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./views/components/Notification.js?");
+
+/***/ },
+/* 588 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _pure = __webpack_require__(402);\n\nvar _pure2 = _interopRequireDefault(_pure);\n\nvar _SvgIcon = __webpack_require__(228);\n\nvar _SvgIcon2 = _interopRequireDefault(_SvgIcon);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar AlertError = function AlertError(props) {\n  return _react2.default.createElement(\n    _SvgIcon2.default,\n    props,\n    _react2.default.createElement('path', { d: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z' })\n  );\n};\nAlertError = (0, _pure2.default)(AlertError);\nAlertError.displayName = 'AlertError';\nAlertError.muiName = 'SvgIcon';\n\nexports.default = AlertError;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/material-ui/svg-icons/alert/error.js\n ** module id = 588\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/material-ui/svg-icons/alert/error.js?");
+
+/***/ },
+/* 589 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _pure = __webpack_require__(402);\n\nvar _pure2 = _interopRequireDefault(_pure);\n\nvar _SvgIcon = __webpack_require__(228);\n\nvar _SvgIcon2 = _interopRequireDefault(_SvgIcon);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar ActionCheckCircle = function ActionCheckCircle(props) {\n  return _react2.default.createElement(\n    _SvgIcon2.default,\n    props,\n    _react2.default.createElement('path', { d: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z' })\n  );\n};\nActionCheckCircle = (0, _pure2.default)(ActionCheckCircle);\nActionCheckCircle.displayName = 'ActionCheckCircle';\nActionCheckCircle.muiName = 'SvgIcon';\n\nexports.default = ActionCheckCircle;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/material-ui/svg-icons/action/check-circle.js\n ** module id = 589\n ** module chunks = 1 2 3 4 5 6 7 8 9 10 11\n **/\n//# sourceURL=webpack:///./~/material-ui/svg-icons/action/check-circle.js?");
 
 /***/ }
 ]));

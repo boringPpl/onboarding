@@ -1487,7 +1487,7 @@
 /* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(4/* empty */, function(require) {\n\t\tcb(__webpack_require__(488));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserForm!./views/containers/admin/user/Form.js\n ** module id = 487\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/Form.js?./~/bundle-loader?lazy&name=UserForm");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(4, function(require) {\n\t\tcb(__webpack_require__(488));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserForm!./views/containers/admin/user/Form.js\n ** module id = 487\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/Form.js?./~/bundle-loader?lazy&name=UserForm");
 
 /***/ },
 /* 488 */,
