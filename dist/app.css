@@ -823,13 +823,13 @@ body {
 
 .layout__heading {
   margin: 0;
-  font-weight: 300;
+  font-weight: 400;
   text-transform: capitalize; }
 
 .layout__subheading {
   margin-top: 2em;
   margin-bottom: 1em;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: capitalize; }
   .layout__subheading:first-child {
     margin-top: 0; }

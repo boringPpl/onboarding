@@ -37,7 +37,8 @@ const routes = [
   { pattern: RoutePattern.fromString('/admin/skills/new'), loadComponent: loadSkillForm },
 
   { pattern: RoutePattern.fromString('/admin/stories'), loadComponent: loadStoryList },
-  { pattern: RoutePattern.fromString('/admin/stories/new'), loadComponent: loadStoryForm }
+  { pattern: RoutePattern.fromString('/admin/stories/new'), loadComponent: loadStoryForm },
+  { pattern: RoutePattern.fromString('/admin/stories/:id'), loadComponent: loadStoryForm }
 ]
 
 const currentRoute = routes.find(({ pattern }) => pattern.matches(window.location.pathname))

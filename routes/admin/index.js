@@ -30,7 +30,10 @@ router.post('/skills/create', skill.create)
 
 router.get('/stories', story.list)
 router.get('/stories/new', story.newStory)
+router.get('/stories/:id', story.get)
 router.post('/stories/create', story.create)
+router.post('/stories/:id/update', story.update)
+router.get('/stories/:id/delete', story.remove)
 
 router.get('/api/courses', api.listCourse)
 router.get('/api/stories', api.listStory)

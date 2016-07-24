@@ -24,7 +24,7 @@ const SearchBar = ({ action, style }) => (
       id='search'
       name='search'
       hintText='Search'
-      underlineStyle={{ display: 'none' }}
+      underlineShow={false}
       style={{ marginLeft: 8 }}
     />
   </form>

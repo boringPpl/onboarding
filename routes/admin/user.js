@@ -19,6 +19,7 @@ export async function list (req, res, next) {
   try {
     let users = await User.find().exec()
     let initialData = {
+      settings: req.cookies,
       error: req.flash('error'),
       users: users.map(user => process(user, userPresenter))
     }
@@ -33,6 +34,7 @@ export async function list (req, res, next) {
 
 export async function newUser (req, res, next) {
   let initialData = {
+    settings: req.cookies,
     error: req.flash('error')
   }
   res.render('index', {
@@ -45,6 +47,7 @@ export async function get (req, res, next) {
   try {
     let user = await User.findById(req.params.id).exec()
     let initialData = {
+      settings: req.cookies,
       error: req.flash('error'),
       user: process(user, userPresenter)
     }

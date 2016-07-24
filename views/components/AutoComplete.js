@@ -32,6 +32,14 @@ class AutoComplete extends Component {
     }, _ => onNewRequest && onNewRequest(dataSource[index], index))
   }
 
+  _handleUpdateInput = (searchText, dataSource) => {
+    if (searchText === '') {
+      this.setState({
+        value: undefined
+      })
+    }
+  }
+
   render () {
     const {
       dataSource,
@@ -53,6 +61,7 @@ class AutoComplete extends Component {
             value: <MenuItem primaryText={data[textField]} />
           }))}
           onNewRequest={this._handleNewRequest}
+          onUpdateInput={this._handleUpdateInput}
           searchText={chosenRequest[textField]}
         />
         {do {

@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import Cookie from 'js-cookie'
+import get from 'lodash/get'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import Drawer from 'material-ui/Drawer'
@@ -27,8 +29,11 @@ class Layout extends Component {
   static propTypes = {
     children: PropTypes.node
   }
-  state = {
-    openDrawer: true
+  constructor (props) {
+    super(props)
+    this.state = {
+      openDrawer: get(props.data, 'settings.openDrawer', 'true') === 'true'
+    }
   }
 
   componentDidMount () {
@@ -40,9 +45,13 @@ class Layout extends Component {
     }, 0)
   }
 
-  _handleToggleDrawer = _ => this.setState({
-    openDrawer: !this.state.openDrawer
-  })
+  _handleToggleDrawer = _ => {
+    this.setState({
+      openDrawer: !this.state.openDrawer
+    }, _ => {
+      Cookie.set('openDrawer', this.state.openDrawer)
+    })
+  }
 
   _handleTapListItem = (e) => {
     const href = e.currentTarget.dataset.href
