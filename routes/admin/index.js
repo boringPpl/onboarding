@@ -13,9 +13,9 @@ router.get('/', dashboard.index)
 
 router.get('/users', user.list)
 router.get('/users/new', user.newUser)
-router.post('/users', user.create)
 router.get('/users/:id', user.get)
-router.post('/users/:id', user.update)
+router.post('/users/create', user.create)
+router.post('/users/:id/update', user.update)
 router.get('/users/:id/delete', user.remove)
 
 router.get('/clients', client.list)
@@ -30,7 +30,10 @@ router.post('/skills/create', skill.create)
 
 router.get('/stories', story.list)
 router.get('/stories/new', story.newStory)
+router.get('/stories/:id', story.get)
 router.post('/stories/create', story.create)
+router.post('/stories/:id/update', story.update)
+router.get('/stories/:id/delete', story.remove)
 
 router.get('/api/courses', api.listCourse)
 router.get('/api/stories', api.listStory)

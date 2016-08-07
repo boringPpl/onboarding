@@ -1,32 +1,49 @@
 import React, { Component } from 'react'
+import { Row, Col } from 'react-flexbox-grid'
+import IconButton from 'material-ui/IconButton'
+import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
+
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import Checkbox from 'material-ui/Checkbox'
 import RaisedButton from 'material-ui/RaisedButton'
-import { Row, Col } from 'react-flexbox-grid'
 import includes from 'lodash/includes'
+
 import Layout from '../Layout'
 import styles from '../layout.css'
 
 class UserForm extends Component {
   render () {
-    let user = this.props.data.user || {}
-    let { id, firstname, lastname, fullname, email, roles } = user
-    let heading = id ? fullname : 'New user'
-    let action = id ? `/admin/users/${id}` : '/admin/users'
-    let roleAdmin = includes(roles, 'admin')
-    let roleContributor = includes(roles, 'contributor')
-    let roleTeacher = includes(roles, 'teacher')
+    let { user } = this.props.data
+    let id, firstname, lastname, fullname, email, roles, roleAdmin, roleContributor, roleTeacher
+    let heading, action
+
+    if (user) {
+      ({ id, firstname, lastname, fullname, email, roles } = user)
+      roleAdmin = includes(roles, 'admin')
+      roleContributor = includes(roles, 'contributor')
+      roleTeacher = includes(roles, 'teacher')
+      heading = fullname
+      action = `/admin/users/${id}/update`
+    } else {
+      heading = 'New user'
+      action = '/admin/users/create'
+    }
 
     return (
       <Layout {...this.props}>
         <Row>
           <Col xs={12} md={9}>
-            <h2 className={styles.heading}>{heading}</h2>
+            <div className={styles.headingWrapper}>
+              <IconButton linkButton href='/admin/users' >
+                <NavigationChevronLeft />
+              </IconButton>
+              <h2 className={styles.heading}>{heading}</h2>
+            </div>
 
             <Paper zDepth={1} style={{ padding: 16 }}>
               <form action={action} method='post'>
-                <h3 className={styles.subheading}>Info</h3>
+                <h3 className={styles.subheading}>User info</h3>
 
                 <Row>
                   <Col xs={12} sm={6}>
@@ -73,7 +90,7 @@ class UserForm extends Component {
                   </Col>
                 </Row>
 
-                <h3 className={styles.subheading}>Roles</h3>
+                <h3 className={styles.subheading}>User roles</h3>
 
                 <Row>
                   <Col xs={12}>
@@ -105,7 +122,12 @@ class UserForm extends Component {
 
                 <Row>
                   <Col xs={12}>
-                    <RaisedButton type='submit' label='Save' primary />
+                    <RaisedButton
+                      className={styles.button}
+                      type='submit'
+                      label='Save'
+                      primary
+                    />
                   </Col>
                 </Row>
               </form>

@@ -2,9 +2,9 @@ import React, { Component, PropTypes } from 'react'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
-import Snackbar from 'material-ui/Snackbar'
 import SvgIcon from 'material-ui/SvgIcon'
 import App from './App'
+import Notification from '../components/Notification'
 import styles from './login.css'
 
 const GithubIcon = props => (
@@ -18,31 +18,16 @@ class Login extends Component {
     data: PropTypes.object
   }
 
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      open: false
-    }
-  }
-
   componentDidMount () {
     setTimeout(() => {
-      this.setState({
-        open: !!this.props.data.error.length
-      })
+      const error = this.props.data.error
+      if (error.length) {
+        this.notification.show('error', error[0])
+      }
     }, 0)
   }
 
-  _handleRequestClose = () => {
-    this.setState({
-      open: false
-    })
-  }
-
   render () {
-    const { error } = this.props.data
-
     return (
       <App>
         <div className={styles.wrapper}>
@@ -94,13 +79,7 @@ class Login extends Component {
             <small>&copy; 2014 hasBrain</small>
           </p>
 
-          <Snackbar
-            bodyStyle={{ maxWidth: 288 }}
-            open={this.state.open}
-            message={error[0] || ''}
-            autoHideDuration={4000}
-            onRequestClose={this._handleRequestClose}
-          />
+          <Notification ref={node => { this.notification = node }} />
         </div>
       </App>
     )

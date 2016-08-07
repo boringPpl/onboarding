@@ -15,14 +15,49 @@ const userPresenter = {
   roles: 'roles'
 }
 
+export async function list (req, res, next) {
+  try {
+    let users = await User.find().exec()
+    let initialData = {
+      settings: req.cookies,
+      error: req.flash('error'),
+      users: users.map(user => process(user, userPresenter))
+    }
+    res.render('index', {
+      html: ReactDOM.renderToString(<UserList data={initialData} />),
+      data: JSON.stringify(initialData)
+    })
+  } catch (err) {
+    res.send(err)
+  }
+}
+
 export async function newUser (req, res, next) {
-  const initialData = {
+  let initialData = {
+    settings: req.cookies,
     error: req.flash('error')
   }
   res.render('index', {
     html: ReactDOM.renderToString(<UserForm data={initialData} />),
     data: JSON.stringify(initialData)
   })
+}
+
+export async function get (req, res, next) {
+  try {
+    let user = await User.findById(req.params.id).exec()
+    let initialData = {
+      settings: req.cookies,
+      error: req.flash('error'),
+      user: process(user, userPresenter)
+    }
+    res.render('index', {
+      html: ReactDOM.renderToString(<UserForm data={initialData} />),
+      data: JSON.stringify(initialData)
+    })
+  } catch (err) {
+    res.send(err)
+  }
 }
 
 export async function create (req, res, next) {
@@ -39,38 +74,6 @@ export async function create (req, res, next) {
   } catch (err) {
     req.flash('error', err.message)
     res.redirect('back')
-  }
-}
-
-export async function list (req, res, next) {
-  try {
-    let users = await User.find().exec()
-    const initialData = {
-      error: req.flash('error'),
-      users: users.map(user => process(user, userPresenter))
-    }
-    res.render('index', {
-      html: ReactDOM.renderToString(<UserList data={initialData} />),
-      data: JSON.stringify(initialData)
-    })
-  } catch (err) {
-    res.send(err)
-  }
-}
-
-export async function get (req, res, next) {
-  try {
-    let user = await User.findById(req.params.id).exec()
-    const initialData = {
-      error: req.flash('error'),
-      user: process(user, userPresenter)
-    }
-    res.render('index', {
-      html: ReactDOM.renderToString(<UserForm data={initialData} />),
-      data: JSON.stringify(initialData)
-    })
-  } catch (err) {
-    res.send(err)
   }
 }
 

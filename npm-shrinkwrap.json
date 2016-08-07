@@ -3430,6 +3430,11 @@
       "from": "js-base64@>=2.1.9 <3.0.0",
       "resolved": "https://registry.npmjs.org/js-base64/-/js-base64-2.1.9.tgz"
     },
+    "js-cookie": {
+      "version": "2.1.2",
+      "from": "js-cookie@latest",
+      "resolved": "https://registry.npmjs.org/js-cookie/-/js-cookie-2.1.2.tgz"
+    },
     "js-tokens": {
       "version": "1.0.3",
       "from": "js-tokens@>=1.0.2 <2.0.0",

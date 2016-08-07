@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
+import { Row, Col } from 'react-flexbox-grid'
+import IconButton from 'material-ui/IconButton'
+import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
+
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import AutoComplete from '../../../components/AutoComplete'
 import MultiSelectField from '../../../components/MultiSelectField'
 import RaisedButton from 'material-ui/RaisedButton'
-import { Row, Col } from 'react-flexbox-grid'
+
 import Layout from '../Layout'
 import styles from '../layout.css'
 
-class SkillForm extends Component {
+class StoryForm extends Component {
   state = {
     courses: [],
     stories: [],
@@ -16,28 +20,49 @@ class SkillForm extends Component {
   }
 
   componentDidMount () {
-    window.fetch('/admin/api/courses')
+    window.fetch('/admin/api/courses', { credentials: 'same-origin' })
       .then(res => res.json())
       .then(data => this.setState({ courses: data }))
-    window.fetch('/admin/api/stories')
+    window.fetch('/admin/api/stories', { credentials: 'same-origin' })
       .then(res => res.json())
       .then(data => this.setState({ stories: data }))
-    window.fetch('/admin/api/skills')
+    window.fetch('/admin/api/skills', { credentials: 'same-origin' })
       .then(res => res.json())
       .then(data => this.setState({ skills: data }))
   }
 
   render () {
     const { courses, skills, stories } = this.state
+    const { story } = this.props.data
+    let id, name, description, course, parent, skill, courseId, parentStoryId
+    let heading, action
+
+    if (story) {
+      ({ id, name, description, course, parent, skill } = story)
+      courseId = course.id
+      parentStoryId = parent.id
+      heading = name
+      action = `/admin/stories/${id}/update`
+    } else {
+      heading = 'New story'
+      action = '/admin/stories/create'
+    }
 
     return (
       <Layout {...this.props}>
         <Row>
           <Col xs={12} md={9}>
-            <h2 className={styles.heading}>New Story</h2>
+            <div className={styles.headingWrapper}>
+              <IconButton linkButton href='/admin/stories' >
+                <NavigationChevronLeft />
+              </IconButton>
+              <h2 className={styles.heading}>{heading}</h2>
+            </div>
 
             <Paper zDepth={1} style={{ padding: 16 }}>
-              <form action='/admin/stories/create' method='post'>
+              <form action={action} method='post'>
+                <h3 className={styles.subheading}>Story details</h3>
+
                 <Row>
                   <Col xs={12}>
                     <TextField
@@ -45,6 +70,7 @@ class SkillForm extends Component {
                       name='name'
                       floatingLabelText='Name'
                       fullWidth
+                      defaultValue={name}
                     />
                   </Col>
                 </Row>
@@ -58,9 +84,12 @@ class SkillForm extends Component {
                       multiLine
                       rows={3}
                       fullWidth
+                      defaultValue={description}
                     />
                   </Col>
                 </Row>
+
+                <h3 className={styles.subheading}>Relationships</h3>
 
                 <Row>
                   <Col xs={12}>
@@ -72,6 +101,7 @@ class SkillForm extends Component {
                       dataSource={courses}
                       dataSourceConfig={{ text: 'name', value: 'id' }}
                       fullWidth
+                      value={courseId}
                     />
                   </Col>
                 </Row>
@@ -86,6 +116,7 @@ class SkillForm extends Component {
                       dataSource={stories}
                       dataSourceConfig={{ text: 'name', value: 'id' }}
                       fullWidth
+                      value={parentStoryId}
                     />
                   </Col>
                 </Row>
@@ -97,6 +128,7 @@ class SkillForm extends Component {
                       floatingLabelText='Skill'
                       dataSource={skills}
                       dataSourceConfig={{ text: 'name', value: 'id' }}
+                      value={skill}
                     />
                   </Col>
                 </Row>
@@ -105,7 +137,12 @@ class SkillForm extends Component {
 
                 <Row>
                   <Col xs={12}>
-                    <RaisedButton type='submit' label='Save' primary />
+                    <RaisedButton
+                      className={styles.button}
+                      type='submit'
+                      label='Save'
+                      primary
+                    />
                   </Col>
                 </Row>
               </form>
@@ -117,4 +154,4 @@ class SkillForm extends Component {
   }
 }
 
-export default SkillForm
+export default StoryForm

@@ -7,7 +7,7 @@
     "npm": "~3.9.3"
   },
   "scripts": {
-    "dev": "gulp dev",
+    "dev": "webpack --watch & nodemon ./bin/www --ignore \"{dist,public}/\"",
     "start": "node ./bin/www",
     "test": "standard --verbose | snazzy",
     "build": "gulp",
@@ -46,6 +46,7 @@
     "gulp-env": "^0.4.0",
     "gulp-nodemon": "^2.1.0",
     "jade": "~1.11.0",
+    "js-cookie": "^2.1.2",
     "jsonwebtoken": "^7.0.1",
     "lodash": "^4.13.1",
     "material-ui": "^0.15.1",
