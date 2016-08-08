@@ -6,3 +6,12 @@ export function ensureAuthorized (req, res, next) {
     res.redirect('/login')
   }
 }
+
+export function ensureAuthenticated (req, res, next) {
+  // return next()
+  if (req.isAuthenticated()) {
+    next()
+  } else {
+    res.redirect('/')
+  }
+}

@@ -184,6 +184,18 @@
       "from": "autoprefixer@>=6.3.1 <7.0.0",
       "resolved": "https://registry.npmjs.org/autoprefixer/-/autoprefixer-6.3.6.tgz"
     },
+    "aws-sdk": {
+      "version": "2.4.13",
+      "from": "aws-sdk@latest",
+      "resolved": "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.4.13.tgz",
+      "dependencies": {
+        "sax": {
+          "version": "1.1.5",
+          "from": "sax@1.1.5",
+          "resolved": "https://registry.npmjs.org/sax/-/sax-1.1.5.tgz"
+        }
+      }
+    },
     "aws-sign2": {
       "version": "0.6.0",
       "from": "aws-sign2@>=0.6.0 <0.7.0",
@@ -3415,6 +3427,11 @@
       "from": "jade@>=1.11.0 <1.12.0",
       "resolved": "https://registry.npmjs.org/jade/-/jade-1.11.0.tgz"
     },
+    "jmespath": {
+      "version": "0.15.0",
+      "from": "jmespath@0.15.0",
+      "resolved": "https://registry.npmjs.org/jmespath/-/jmespath-0.15.0.tgz"
+    },
     "jodid25519": {
       "version": "1.0.2",
       "from": "jodid25519@>=1.0.0 <2.0.0",
@@ -4936,9 +4953,9 @@
       "resolved": "https://registry.npmjs.org/react-event-listener/-/react-event-listener-0.2.1.tgz"
     },
     "react-flexbox-grid": {
-      "version": "0.9.6",
-      "from": "react-flexbox-grid@latest",
-      "resolved": "https://registry.npmjs.org/react-flexbox-grid/-/react-flexbox-grid-0.9.6.tgz"
+      "version": "0.10.2",
+      "from": "react-flexbox-grid@0.10.2",
+      "resolved": "https://registry.npmjs.org/react-flexbox-grid/-/react-flexbox-grid-0.10.2.tgz"
     },
     "react-tap-event-plugin": {
       "version": "1.0.0",
@@ -6183,6 +6200,23 @@
       "version": "2.0.0",
       "from": "xdg-basedir@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/xdg-basedir/-/xdg-basedir-2.0.0.tgz"
+    },
+    "xml2js": {
+      "version": "0.4.15",
+      "from": "xml2js@0.4.15",
+      "resolved": "https://registry.npmjs.org/xml2js/-/xml2js-0.4.15.tgz"
+    },
+    "xmlbuilder": {
+      "version": "2.6.2",
+      "from": "xmlbuilder@2.6.2",
+      "resolved": "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-2.6.2.tgz",
+      "dependencies": {
+        "lodash": {
+          "version": "3.5.0",
+          "from": "lodash@>=3.5.0 <3.6.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.5.0.tgz"
+        }
+      }
     },
     "xmlhttprequest": {
       "version": "1.8.0",

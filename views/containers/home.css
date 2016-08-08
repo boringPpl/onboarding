@@ -1,0 +1,29 @@
+$primary-color: #ff6f22;
+
+.home {
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5;
+}
+
+.header {
+  height: 70px;
+}
+
+.logo {
+  float: left;
+  display: block;
+}
+
+.headerSlogan {
+  float: left;
+  line-height: 70px;
+}
+
+.headerSignup {
+  float: right;
+  line-height: 70px;
+}
+
+.logo {
+  max-width: 80px;
+}

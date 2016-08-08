@@ -4,10 +4,13 @@ import RoutePattern from 'route-pattern'
 import 'flexboxgrid'
 import 'stylesheets/style.css'
 import 'containers/login.css'
+import 'containers/home.css'
 import 'containers/admin/layout.css'
 
 require.context('../images', false, /^.*$/)
 
+const loadHome = require('bundle?lazy&name=Home!containers/Home')
+const loadProfileUpdateForm = require('bundle?lazy&name=ProfileUpdateForm!containers/profile/UpdateForm')
 const loadLogin = require('bundle?lazy&name=Login!containers/Login')
 const loadDashboard = require('bundle?lazy&name=Dashboard!containers/admin/Dashboard')
 const loadUserList = require('bundle?lazy&name=UserList!containers/admin/user/List')
@@ -21,6 +24,8 @@ const loadStoryList = require('bundle?lazy&name=StoryList!containers/admin/story
 const loadStoryForm = require('bundle?lazy&name=StoryForm!containers/admin/story/Form')
 
 const routes = [
+  { pattern: RoutePattern.fromString('/'), loadComponent: loadHome },
+  { pattern: RoutePattern.fromString('/profiles/:id/update'), loadComponent: loadProfileUpdateForm },
   { pattern: RoutePattern.fromString('/login'), loadComponent: loadLogin },
   { pattern: RoutePattern.fromString('/admin'), loadComponent: loadDashboard },
 

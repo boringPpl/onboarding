@@ -8,7 +8,6 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import passport from 'passport'
 import flash from 'connect-flash'
-// import multer from 'multer'
 // import favicon from 'serve-favicon'
 
 // load environment variables
@@ -23,6 +22,7 @@ require('./models')
 const routes = require('./routes')
 const api = require('./routes/api')
 const admin = require('./routes/admin')
+const profile = require('./routes/profile')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'templates'))
@@ -48,6 +48,7 @@ app.use(flash())
 app.use('/', routes)
 app.use('/api/v1', api)
 app.use('/admin', admin)
+app.use('/profiles', profile)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
