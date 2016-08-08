@@ -9,6 +9,8 @@ const userSchema = mongoose.Schema({
   email: { type: String, unique: true, index: true, required: true },
   password: { type: String },
   githubId: { type: String },
+  githubProfile: mongoose.Schema.Types.Mixed,
+  linkedinProfile: { type: String },
   roles: {
     type: [{ type: String, enum: ['admin', 'contributor', 'teacher'] }],
     default: []

@@ -10,8 +10,8 @@ $primary-color: #ff6f22;
 }
 
 .logo {
-  float: left;
   display: block;
+  float: left;
 }
 
 .headerSlogan {

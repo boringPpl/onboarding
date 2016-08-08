@@ -48,7 +48,7 @@ router.use('/profiles', middlewares.ensureAuthenticated)
 
 /* Github */
 router.get('/auth/github',
-  passport.authenticate('github', { scope: ['user:email', 'repo'] }))
+  passport.authenticate('github', { scope: ['user:email', 'public_repo'] }))
 
 router.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),

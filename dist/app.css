@@ -820,8 +820,8 @@ body {
   height: 70px; }
 
 .home__logo {
-  float: left;
-  display: block; }
+  display: block;
+  float: left; }
 
 .home__headerSlogan {
   float: left;

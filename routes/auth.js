@@ -90,10 +90,12 @@ passport.use(new GitHubStrategy({
     let user = await User.findOne({ email: primaryEmail }).exec()
     if (user) {
       user.githubId = profile.id
+      user.githubProfile = profile
     } else {
       user = new User({
         email: primaryEmail,
-        githubId: profile.id
+        githubId: profile.id,
+        githubProfile: profile
       })
     }
     await user.save()
