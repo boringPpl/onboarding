@@ -60,7 +60,8 @@ class Home extends Component {
                   <h1 className={styles.featureHeading}>How does it work?</h1>
                   <p>
                     We will email you when our alpha launch is ready. <br />
-                    Simply access the site and login with your Github/LinkedIn account.
+                    Simply access the site and login with your Github/LinkedIn account. <br />
+                    All profiles on hasBrain are private unless you indicate sections you want to be public
                   </p>
                 </Col>
               </Row>
@@ -91,7 +92,7 @@ class Home extends Component {
               <Row>
                 <Col xs={12}>
                   <h1>Sign Up</h1>
-                  <p>Sign up today and be the first to get your profile!</p>
+                  <p>Sign up today and be the first to get your profile! <br /> Ready to join the fun?</p>
                   <br />
                   <RaisedButton
                     label='Login with Github'
@@ -109,7 +110,7 @@ class Home extends Component {
           </div>
 
           <div className={styles.footer}>
-            hasBrain &copy; 2015
+            &copy; 2014 hasBrain
           </div>
         </div>
       </App>

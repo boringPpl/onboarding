@@ -1,0 +1,37 @@
+.wrapper {
+  padding: 32px;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 560px;
+  padding: 24px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: block;
+  max-width: 80px;
+  margin: 32px auto;
+}
+
+.text {
+  text-align: center;
+}
+
+.heading {
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+}
+
+.subheading {
+  margin: 16px 0;
+  font-weight: 400;
+  color: #aaa;
+}
+
+.footer {
+  color: gray;
+  text-align: center;
+}

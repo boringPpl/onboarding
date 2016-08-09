@@ -5,7 +5,8 @@ import 'flexboxgrid'
 import 'stylesheets/style.css'
 import 'containers/login.css'
 import 'containers/home.css'
-import 'containers/admin/layout.css'
+import 'containers/profile/layout.css'
+// import 'containers/admin/layout.css'
 
 require.context('../images', false, /^.*$/)
 

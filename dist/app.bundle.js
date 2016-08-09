@@ -95,7 +95,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(37);\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _routePattern = __webpack_require__(167);\n\nvar _routePattern2 = _interopRequireDefault(_routePattern);\n\n__webpack_require__(171);\n\n__webpack_require__(175);\n\n__webpack_require__(177);\n\n__webpack_require__(179);\n\n__webpack_require__(181);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n__webpack_require__(183);\n\nvar loadHome = __webpack_require__(191);\nvar loadProfileUpdateForm = __webpack_require__(393);\nvar loadLogin = __webpack_require__(395);\nvar loadDashboard = __webpack_require__(424);\nvar loadUserList = __webpack_require__(486);\nvar loadUserForm = __webpack_require__(512);\nvar loadClientList = __webpack_require__(521);\nvar loadCourseList = __webpack_require__(537);\nvar loadCourseForm = __webpack_require__(539);\nvar loadSkillList = __webpack_require__(541);\nvar loadSkillForm = __webpack_require__(543);\nvar loadStoryList = __webpack_require__(575);\nvar loadStoryForm = __webpack_require__(577);\n\nvar routes = [{ pattern: _routePattern2.default.fromString('/'), loadComponent: loadHome }, { pattern: _routePattern2.default.fromString('/profiles/:id/update'), loadComponent: loadProfileUpdateForm }, { pattern: _routePattern2.default.fromString('/login'), loadComponent: loadLogin }, { pattern: _routePattern2.default.fromString('/admin'), loadComponent: loadDashboard }, { pattern: _routePattern2.default.fromString('/admin/users'), loadComponent: loadUserList }, { pattern: _routePattern2.default.fromString('/admin/users/new'), loadComponent: loadUserForm }, { pattern: _routePattern2.default.fromString('/admin/users/:id'), loadComponent: loadUserForm }, { pattern: _routePattern2.default.fromString('/admin/clients'), loadComponent: loadClientList }, { pattern: _routePattern2.default.fromString('/admin/courses'), loadComponent: loadCourseList }, { pattern: _routePattern2.default.fromString('/admin/courses/new'), loadComponent: loadCourseForm }, { pattern: _routePattern2.default.fromString('/admin/skills'), loadComponent: loadSkillList }, { pattern: _routePattern2.default.fromString('/admin/skills/new'), loadComponent: loadSkillForm }, { pattern: _routePattern2.default.fromString('/admin/stories'), loadComponent: loadStoryList }, { pattern: _routePattern2.default.fromString('/admin/stories/new'), loadComponent: loadStoryForm }, { pattern: _routePattern2.default.fromString('/admin/stories/:id'), loadComponent: loadStoryForm }];\n\nvar currentRoute = routes.find(function (_ref) {\n  var pattern = _ref.pattern;\n  return pattern.matches(window.location.pathname);\n});\nvar data = window.__INITIAL_DATA__;\n\nif (currentRoute) {\n  currentRoute.loadComponent(function (Component) {\n    _reactDom2.default.render(_react2.default.createElement(Component, { data: data }), document.getElementById('react-root'));\n  });\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/javascripts/app.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/javascripts/app.js?");
+	eval("'use strict';\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(37);\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _routePattern = __webpack_require__(167);\n\nvar _routePattern2 = _interopRequireDefault(_routePattern);\n\n__webpack_require__(171);\n\n__webpack_require__(175);\n\n__webpack_require__(177);\n\n__webpack_require__(179);\n\n__webpack_require__(181);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// import 'containers/admin/layout.css'\n\n__webpack_require__(183);\n\nvar loadHome = __webpack_require__(191);\nvar loadProfileUpdateForm = __webpack_require__(393);\nvar loadLogin = __webpack_require__(422);\nvar loadDashboard = __webpack_require__(441);\nvar loadUserList = __webpack_require__(491);\nvar loadUserForm = __webpack_require__(516);\nvar loadClientList = __webpack_require__(525);\nvar loadCourseList = __webpack_require__(541);\nvar loadCourseForm = __webpack_require__(543);\nvar loadSkillList = __webpack_require__(545);\nvar loadSkillForm = __webpack_require__(547);\nvar loadStoryList = __webpack_require__(579);\nvar loadStoryForm = __webpack_require__(581);\n\nvar routes = [{ pattern: _routePattern2.default.fromString('/'), loadComponent: loadHome }, { pattern: _routePattern2.default.fromString('/profiles/:id/update'), loadComponent: loadProfileUpdateForm }, { pattern: _routePattern2.default.fromString('/login'), loadComponent: loadLogin }, { pattern: _routePattern2.default.fromString('/admin'), loadComponent: loadDashboard }, { pattern: _routePattern2.default.fromString('/admin/users'), loadComponent: loadUserList }, { pattern: _routePattern2.default.fromString('/admin/users/new'), loadComponent: loadUserForm }, { pattern: _routePattern2.default.fromString('/admin/users/:id'), loadComponent: loadUserForm }, { pattern: _routePattern2.default.fromString('/admin/clients'), loadComponent: loadClientList }, { pattern: _routePattern2.default.fromString('/admin/courses'), loadComponent: loadCourseList }, { pattern: _routePattern2.default.fromString('/admin/courses/new'), loadComponent: loadCourseForm }, { pattern: _routePattern2.default.fromString('/admin/skills'), loadComponent: loadSkillList }, { pattern: _routePattern2.default.fromString('/admin/skills/new'), loadComponent: loadSkillForm }, { pattern: _routePattern2.default.fromString('/admin/stories'), loadComponent: loadStoryList }, { pattern: _routePattern2.default.fromString('/admin/stories/new'), loadComponent: loadStoryForm }, { pattern: _routePattern2.default.fromString('/admin/stories/:id'), loadComponent: loadStoryForm }];\n\nvar currentRoute = routes.find(function (_ref) {\n  var pattern = _ref.pattern;\n  return pattern.matches(window.location.pathname);\n});\nvar data = window.__INITIAL_DATA__;\n\nif (currentRoute) {\n  currentRoute.loadComponent(function (Component) {\n    _reactDom2.default.render(_react2.default.createElement(Component, { data: data }), document.getElementById('react-root'));\n  });\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./public/javascripts/app.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./public/javascripts/app.js?");
 
 /***/ },
 /* 1 */
@@ -1125,12 +1125,7 @@
 
 /***/ },
 /* 172 */,
-/* 173 */
-/***/ function(module, exports) {
-
-	eval("/*\r\n\tMIT License http://www.opensource.org/licenses/mit-license.php\r\n\tAuthor Tobias Koppers @sokra\r\n*/\r\n// css base code, injected by the css-loader\r\nmodule.exports = function() {\r\n\tvar list = [];\r\n\r\n\t// return the list of modules as css string\r\n\tlist.toString = function toString() {\r\n\t\tvar result = [];\r\n\t\tfor(var i = 0; i < this.length; i++) {\r\n\t\t\tvar item = this[i];\r\n\t\t\tif(item[2]) {\r\n\t\t\t\tresult.push(\"@media \" + item[2] + \"{\" + item[1] + \"}\");\r\n\t\t\t} else {\r\n\t\t\t\tresult.push(item[1]);\r\n\t\t\t}\r\n\t\t}\r\n\t\treturn result.join(\"\");\r\n\t};\r\n\r\n\t// import a list of modules into the list\r\n\tlist.i = function(modules, mediaQuery) {\r\n\t\tif(typeof modules === \"string\")\r\n\t\t\tmodules = [[null, modules, \"\"]];\r\n\t\tvar alreadyImportedModules = {};\r\n\t\tfor(var i = 0; i < this.length; i++) {\r\n\t\t\tvar id = this[i][0];\r\n\t\t\tif(typeof id === \"number\")\r\n\t\t\t\talreadyImportedModules[id] = true;\r\n\t\t}\r\n\t\tfor(i = 0; i < modules.length; i++) {\r\n\t\t\tvar item = modules[i];\r\n\t\t\t// skip already imported module\r\n\t\t\t// this implementation is not 100% perfect for weird media query combinations\r\n\t\t\t//  when a module is imported multiple times with different media queries.\r\n\t\t\t//  I hope this will never occur (Hey this way we have smaller bundles)\r\n\t\t\tif(typeof item[0] !== \"number\" || !alreadyImportedModules[item[0]]) {\r\n\t\t\t\tif(mediaQuery && !item[2]) {\r\n\t\t\t\t\titem[2] = mediaQuery;\r\n\t\t\t\t} else if(mediaQuery) {\r\n\t\t\t\t\titem[2] = \"(\" + item[2] + \") and (\" + mediaQuery + \")\";\r\n\t\t\t\t}\r\n\t\t\t\tlist.push(item);\r\n\t\t\t}\r\n\t\t}\r\n\t};\r\n\treturn list;\r\n};\r\n\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/css-loader/lib/css-base.js\n ** module id = 173\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./~/css-loader/lib/css-base.js?");
-
-/***/ },
+/* 173 */,
 /* 174 */,
 /* 175 */
 /***/ function(module, exports) {
@@ -1156,7 +1151,7 @@
 /* 181 */
 /***/ function(module, exports) {
 
-	eval("// removed by extract-text-webpack-plugin\nmodule.exports = {\"content\":\"layout__content\",\"headingWrapper\":\"layout__headingWrapper\",\"heading\":\"layout__heading\",\"subheading\":\"layout__subheading\",\"checkbox\":\"layout__checkbox\",\"button\":\"layout__button\"};\n\n/*****************\n ** WEBPACK FOOTER\n ** ./views/containers/admin/layout.css\n ** module id = 181\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/layout.css?");
+	eval("// removed by extract-text-webpack-plugin\nmodule.exports = {\"wrapper\":\"layout__wrapper\",\"dialog\":\"layout__dialog\",\"logo\":\"layout__logo\",\"text\":\"layout__text\",\"heading\":\"layout__heading\",\"subheading\":\"layout__subheading\",\"footer\":\"layout__footer\"};\n\n/*****************\n ** WEBPACK FOOTER\n ** ./views/containers/profile/layout.css\n ** module id = 181\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/profile/layout.css?");
 
 /***/ },
 /* 182 */,
@@ -1422,12 +1417,7 @@
 
 /***/ },
 /* 394 */,
-/* 395 */
-/***/ function(module, exports, __webpack_require__) {
-
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(3, function(require) {\n\t\tcb(__webpack_require__(396));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Login!./views/containers/Login.js\n ** module id = 395\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/Login.js?./~/bundle-loader?lazy&name=Login");
-
-/***/ },
+/* 395 */,
 /* 396 */,
 /* 397 */,
 /* 398 */,
@@ -1454,14 +1444,14 @@
 /* 419 */,
 /* 420 */,
 /* 421 */,
-/* 422 */,
-/* 423 */,
-/* 424 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(4, function(require) {\n\t\tcb(__webpack_require__(425));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Dashboard!./views/containers/admin/Dashboard.js\n ** module id = 424\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/Dashboard.js?./~/bundle-loader?lazy&name=Dashboard");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(3, function(require) {\n\t\tcb(__webpack_require__(423));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Login!./views/containers/Login.js\n ** module id = 422\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/Login.js?./~/bundle-loader?lazy&name=Login");
 
 /***/ },
+/* 423 */,
+/* 424 */,
 /* 425 */,
 /* 426 */,
 /* 427 */,
@@ -1478,7 +1468,12 @@
 /* 438 */,
 /* 439 */,
 /* 440 */,
-/* 441 */,
+/* 441 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(4, function(require) {\n\t\tcb(__webpack_require__(442));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=Dashboard!./views/containers/admin/Dashboard.js\n ** module id = 441\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/Dashboard.js?./~/bundle-loader?lazy&name=Dashboard");
+
+/***/ },
 /* 442 */,
 /* 443 */,
 /* 444 */,
@@ -1523,17 +1518,17 @@
 /* 483 */,
 /* 484 */,
 /* 485 */,
-/* 486 */
-/***/ function(module, exports, __webpack_require__) {
-
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(5, function(require) {\n\t\tcb(__webpack_require__(487));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserList!./views/containers/admin/user/List.js\n ** module id = 486\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/List.js?./~/bundle-loader?lazy&name=UserList");
-
-/***/ },
+/* 486 */,
 /* 487 */,
 /* 488 */,
 /* 489 */,
 /* 490 */,
-/* 491 */,
+/* 491 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(5, function(require) {\n\t\tcb(__webpack_require__(492));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserList!./views/containers/admin/user/List.js\n ** module id = 491\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/List.js?./~/bundle-loader?lazy&name=UserList");
+
+/***/ },
 /* 492 */,
 /* 493 */,
 /* 494 */,
@@ -1554,30 +1549,30 @@
 /* 509 */,
 /* 510 */,
 /* 511 */,
-/* 512 */
-/***/ function(module, exports, __webpack_require__) {
-
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(6, function(require) {\n\t\tcb(__webpack_require__(513));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserForm!./views/containers/admin/user/Form.js\n ** module id = 512\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/Form.js?./~/bundle-loader?lazy&name=UserForm");
-
-/***/ },
+/* 512 */,
 /* 513 */,
 /* 514 */,
 /* 515 */,
-/* 516 */,
+/* 516 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(6, function(require) {\n\t\tcb(__webpack_require__(517));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=UserForm!./views/containers/admin/user/Form.js\n ** module id = 516\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/user/Form.js?./~/bundle-loader?lazy&name=UserForm");
+
+/***/ },
 /* 517 */,
 /* 518 */,
 /* 519 */,
 /* 520 */,
-/* 521 */
-/***/ function(module, exports, __webpack_require__) {
-
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(7, function(require) {\n\t\tcb(__webpack_require__(522));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=ClientList!./views/containers/admin/client/List.js\n ** module id = 521\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/client/List.js?./~/bundle-loader?lazy&name=ClientList");
-
-/***/ },
+/* 521 */,
 /* 522 */,
 /* 523 */,
 /* 524 */,
-/* 525 */,
+/* 525 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(7, function(require) {\n\t\tcb(__webpack_require__(526));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=ClientList!./views/containers/admin/client/List.js\n ** module id = 525\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/client/List.js?./~/bundle-loader?lazy&name=ClientList");
+
+/***/ },
 /* 526 */,
 /* 527 */,
 /* 528 */,
@@ -1589,37 +1584,37 @@
 /* 534 */,
 /* 535 */,
 /* 536 */,
-/* 537 */
-/***/ function(module, exports, __webpack_require__) {
-
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(8, function(require) {\n\t\tcb(__webpack_require__(538));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=CourseList!./views/containers/admin/course/List.js\n ** module id = 537\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/course/List.js?./~/bundle-loader?lazy&name=CourseList");
-
-/***/ },
+/* 537 */,
 /* 538 */,
-/* 539 */
-/***/ function(module, exports, __webpack_require__) {
-
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(9, function(require) {\n\t\tcb(__webpack_require__(540));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=CourseForm!./views/containers/admin/course/Form.js\n ** module id = 539\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/course/Form.js?./~/bundle-loader?lazy&name=CourseForm");
-
-/***/ },
+/* 539 */,
 /* 540 */,
 /* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(10, function(require) {\n\t\tcb(__webpack_require__(542));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=SkillList!./views/containers/admin/skill/List.js\n ** module id = 541\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/skill/List.js?./~/bundle-loader?lazy&name=SkillList");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(8, function(require) {\n\t\tcb(__webpack_require__(542));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=CourseList!./views/containers/admin/course/List.js\n ** module id = 541\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/course/List.js?./~/bundle-loader?lazy&name=CourseList");
 
 /***/ },
 /* 542 */,
 /* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(11, function(require) {\n\t\tcb(__webpack_require__(544));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=SkillForm!./views/containers/admin/skill/Form.js\n ** module id = 543\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/skill/Form.js?./~/bundle-loader?lazy&name=SkillForm");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(9, function(require) {\n\t\tcb(__webpack_require__(544));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=CourseForm!./views/containers/admin/course/Form.js\n ** module id = 543\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/course/Form.js?./~/bundle-loader?lazy&name=CourseForm");
 
 /***/ },
 /* 544 */,
-/* 545 */,
+/* 545 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(10, function(require) {\n\t\tcb(__webpack_require__(546));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=SkillList!./views/containers/admin/skill/List.js\n ** module id = 545\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/skill/List.js?./~/bundle-loader?lazy&name=SkillList");
+
+/***/ },
 /* 546 */,
-/* 547 */,
+/* 547 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(11, function(require) {\n\t\tcb(__webpack_require__(548));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=SkillForm!./views/containers/admin/skill/Form.js\n ** module id = 547\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/skill/Form.js?./~/bundle-loader?lazy&name=SkillForm");
+
+/***/ },
 /* 548 */,
 /* 549 */,
 /* 550 */,
@@ -1647,17 +1642,21 @@
 /* 572 */,
 /* 573 */,
 /* 574 */,
-/* 575 */
+/* 575 */,
+/* 576 */,
+/* 577 */,
+/* 578 */,
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(12, function(require) {\n\t\tcb(__webpack_require__(576));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=StoryList!./views/containers/admin/story/List.js\n ** module id = 575\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/story/List.js?./~/bundle-loader?lazy&name=StoryList");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(12, function(require) {\n\t\tcb(__webpack_require__(580));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=StoryList!./views/containers/admin/story/List.js\n ** module id = 579\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/story/List.js?./~/bundle-loader?lazy&name=StoryList");
 
 /***/ },
-/* 576 */,
-/* 577 */
+/* 580 */,
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(13, function(require) {\n\t\tcb(__webpack_require__(578));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=StoryForm!./views/containers/admin/story/Form.js\n ** module id = 577\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/story/Form.js?./~/bundle-loader?lazy&name=StoryForm");
+	eval("module.exports = function(cb) {\n\t__webpack_require__.e/* nsure */(13, function(require) {\n\t\tcb(__webpack_require__(582));\n\t});\n}\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/bundle-loader?lazy&name=StoryForm!./views/containers/admin/story/Form.js\n ** module id = 581\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./views/containers/admin/story/Form.js?./~/bundle-loader?lazy&name=StoryForm");
 
 /***/ }
 /******/ ]);

@@ -9,6 +9,7 @@ import UpdateForm from '../../views/containers/profile/UpdateForm'
 const upload = multer()
 const s3 = new AWS.S3()
 const router = express.Router()
+
 const User = mongoose.model('User')
 
 router.get('/list', async (req, res) => {
@@ -20,36 +21,51 @@ router.get('/list', async (req, res) => {
   }
 })
 
-router.get('/:id/update', (req, res) => {
-  const initialData = {
-    error: req.flash('error')
+router.get('/:id/update', async (req, res) => {
+  try {
+    let user = await User.findById(req.user._id).lean().exec()
+    if (!user) return res.redirect('/')
+    let initialData = {
+      error: req.flash('error'),
+      user
+    }
+    res.render('index', {
+      html: ReactDOM.renderToString(<UpdateForm data={initialData} />),
+      data: JSON.stringify(initialData)
+    })
+  } catch (err) {
+    res.send(err)
   }
-  res.render('index', {
-    html: ReactDOM.renderToString(<UpdateForm data={initialData} />),
-    data: JSON.stringify(initialData)
-  })
 })
 
-router.post('/upload', upload.any(), (req, res) => {
-  const file = req.files[0]
-  const userId = req.user._id
-  const key = `linkedin-profiles/${userId}-${file.originalname}`
+router.post('/update', upload.any(), async (req, res) => {
+  try {
+    const file = req.files[0]
+    const userId = req.user._id
+    let user = await User.findById(userId).exec()
 
-  s3.putObject({
-    Bucket: process.env.S3_BUCKET,
-    Key: key,
-    Body: file.buffer
-  }, async err => {
-    try {
-      if (err) throw new Error(err)
-      let user = await User.findById(userId).exec()
-      user.linkedinProfile = key
+    if (file) {
+      const key = `linkedin-profiles/${userId}-${file.originalname}`
+      s3.putObject({
+        Bucket: process.env.S3_BUCKET,
+        Key: key,
+        Body: file.buffer
+      }, async _ => {
+        user.linkedinProfile = key
+        user.settings.publicGithubProfile = req.body.setting_github === 'on'
+        user.settings.publicLinkedinProfile = req.body.setting_linkedin === 'on'
+        await user.save()
+        res.redirect('back')
+      })
+    } else {
+      user.settings.publicGithubProfile = req.body.setting_github === 'on'
+      user.settings.publicLinkedinProfile = req.body.setting_linkedin === 'on'
       await user.save()
-      res.send('THANKS! WE WILL GET BACK TO YOU SOON.')
-    } catch (error) {
-      res.send(error)
+      res.redirect('back')
     }
-  })
+  } catch (err) {
+    res.send(err)
+  }
 })
 
 export default router

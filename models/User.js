@@ -14,6 +14,10 @@ const userSchema = mongoose.Schema({
   roles: {
     type: [{ type: String, enum: ['admin', 'contributor', 'teacher'] }],
     default: []
+  },
+  settings: {
+    publicGithubProfile: { type: Boolean, default: false },
+    publicLinkedinProfile: { type: Boolean, default: false }
   }
 })
 
