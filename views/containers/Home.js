@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import RaisedButton from 'material-ui/RaisedButton'
 import SvgIcon from 'material-ui/SvgIcon'
@@ -13,93 +13,103 @@ const GithubIcon = props => (
 )
 
 class Home extends Component {
-  static propTypes = {
-    data: PropTypes.object
-  }
-
-  componentDidMount () {
-    setTimeout(() => {
-      const error = this.props.data.error
-      if (error.length) {
-        this.notification.show('error', error[0])
-      }
-    }, 0)
-  }
-
   render () {
     return (
       <App>
         <div className={styles.home}>
-          <div className={styles.header}>
+          <div className={styles.headerWrapper}>
             <Grid>
               <Row>
                 <Col xs={12}>
-                  <img className={styles.logo} src='logo.png' height='50' />
-                  <div className={styles.headerSlogan}>Work with the Best to be the Best of You.</div>
-                  <div className={styles.headerSignup}>How does it work? Sign up</div>
+                  <img className={styles.logo} src='logo.png' />
+                  <div className={styles.headerSlogan}>Work with the Best <br /> to be the Best of You.</div>
+                  <div className={styles.headerSignup}>
+                    <a href='#features'>How does it work?</a>
+                    &nbsp;&nbsp;
+                    <a href='#signup'>Sign up</a>
+                  </div>
                 </Col>
               </Row>
             </Grid>
           </div>
 
-          <div>
-            <Grid style={{ background: 'red' }}>
-              <Row>
+          <div className={styles.bannerWrapper}>
+            <Grid>
+              <Row middle='xs' className={styles.bannerContent}>
                 <Col xs={12} sm={6} xsOffset={0} smOffset={6}>
-                  <h1>Profile yourself as a developer today.</h1>
-                  <p>Find out about other similar skilled developers.</p>
-                  <p>Connect with them.</p>
+                  <h1 className={styles.bannerHeading}>Profile yourself as a developer today.</h1>
+                  <p>Find out about other similar skilled developers. <br /> Connect with them.</p>
+                  <RaisedButton
+                    label='Sign up now'
+                    backgroundColor='#ff6f22'
+                    labelColor='white'
+                    linkButton
+                    href='#signup'
+                    style={{ width: 192, height: 64 }}
+                    labelStyle={{ fontSize: 18 }}
+                  />
                 </Col>
               </Row>
             </Grid>
           </div>
 
-          <div>
+          <div id='features' className={styles.featuresWrapper}>
             <Grid>
               <Row>
                 <Col xs={12}>
-                  <h1>How does it work?</h1>
-                  <p>We will email you when our alpha launch is ready.</p>
-                  <p>Simply access the site and login with your Github/LinkedIn account.</p>
+                  <h1 className={styles.featureHeading}>How does it work?</h1>
+                  <p>
+                    We will email you when our alpha launch is ready. <br />
+                    Simply access the site and login with your Github/LinkedIn account.
+                  </p>
                 </Col>
               </Row>
-
+              <br />
               <Row>
                 <Col xs={12} sm={4}>
-                  <h1>Get Profiled</h1>
-                  <p>Login with your LinkedIn or Github account and we will do the rest of profiling.</p>
+                  <img src='feature-icon-1.png' />
+                  <h2 className={styles.featureHeading}>Get Profiled</h2>
+                  <p className={styles.small}>Login with your LinkedIn or Github account and we will do the rest of profiling.</p>
                 </Col>
                 <Col xs={12} sm={4}>
-                  <h1>Know Developers with Similar Skills</h1>
-                  <p>Get intro to peers at the code level and their area of interest.</p>
+                  <img src='feature-icon-2.png' />
+                  <h2 className={styles.featureHeading}>Know Developers with Similar Skills</h2>
+                  <p className={styles.small}>Get intro to peers at the code level and their area of interest.</p>
                 </Col>
                 <Col xs={12} sm={4}>
-                  <h1>Contribute and Improve with the Community</h1>
-                  <p>Benchmark your idea and share with everyone so we can all learn.</p>
+                  <img src='feature-icon-3.png' />
+                  <h2 className={styles.featureHeading}>Contribute and Improve with the Community</h2>
+                  <p className={styles.small}>Benchmark your idea and share with everyone so we can all learn.</p>
                 </Col>
               </Row>
 
             </Grid>
           </div>
 
-          <div>
-            <Grid style={{ background: 'grey' }}>
+          <div id='signup' className={styles.signupWrapper}>
+            <Grid>
               <Row>
                 <Col xs={12}>
                   <h1>Sign Up</h1>
                   <p>Sign up today and be the first to get your profile!</p>
+                  <br />
                   <RaisedButton
                     label='Login with Github'
-                    style={{ width: '100%' }}
                     backgroundColor='#333'
                     labelColor='white'
                     linkButton
                     href='/auth/github'
                     icon={<GithubIcon style={{ width: 24, height: 24 }} color='white' />}
+                    style={{ width: 288, height: 64 }}
+                    labelStyle={{ fontSize: 18, verticalAlign: 'middle' }}
                   />
                 </Col>
               </Row>
             </Grid>
+          </div>
+
+          <div className={styles.footer}>
+            hasBrain &copy; 2015
           </div>
         </div>
       </App>
