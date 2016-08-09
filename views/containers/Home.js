@@ -110,7 +110,7 @@ class Home extends Component {
           </div>
 
           <div className={styles.footer}>
-            &copy; 2014 hasBrain
+            Copyright &copy; 2016 hasBrain
           </div>
         </div>
       </App>

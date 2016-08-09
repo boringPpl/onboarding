@@ -29,7 +29,10 @@ class UpdateForm extends Component {
         <div className={styles.wrapper}>
           <Paper zDepth={1} className={styles.dialog}>
             <img className={styles.logo} src='/logo-notext.png' />
-            <h2 className={styles.heading}>Thanks for signing up!</h2>
+            <h2 className={styles.heading}>Thank you for your sign up</h2>
+            <p className={styles.text}>
+              we will get in touch when we open up the rest of the profiling tool
+            </p>
             <p className={styles.text}>
               All your profiles are hidden now. <br /> Indicate which sections you want to be public.
             </p>
@@ -96,7 +99,7 @@ class UpdateForm extends Component {
           </Paper>
 
           <p className={styles.footer}>
-            <small>&copy; 2014 hasBrain</small>
+            <small>Copyright &copy; 2016 hasBrain</small>
           </p>
         </div>
       </App>
