@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Paper from 'material-ui/Paper'
+import { Grid, Row, Col } from 'react-flexbox-grid'
 import { List, ListItem } from 'material-ui/List'
 import Toggle from 'material-ui/Toggle'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -7,6 +7,7 @@ import CheckIcon from 'material-ui/svg-icons/action/check-circle'
 import { lightGreen500 } from 'material-ui/styles/colors'
 import App from '../App'
 import styles from './layout.css'
+import homeStyles from '../home.css'
 
 class UpdateForm extends Component {
   state = {
@@ -27,14 +28,23 @@ class UpdateForm extends Component {
     return (
       <App>
         <div className={styles.wrapper}>
-          <Paper zDepth={1} className={styles.dialog}>
+          <div className={homeStyles.headerWrapper}>
+            <Grid>
+              <Row>
+                <Col xs={12}>
+                  <img className={homeStyles.logo} src='/logo.png' />
+                  <div className={homeStyles.headerSlogan}>Work with the Best <br /> to be the Best of You.</div>
+                </Col>
+              </Row>
+            </Grid>
+          </div>
+
+          <div zDepth={1} className={styles.dialog}>
             <img className={styles.logo} src='/logo-notext.png' />
             <h2 className={styles.heading}>Thank you for your sign up</h2>
             <p className={styles.text}>
-              we will get in touch when we open up the rest of the profiling tool
-            </p>
-            <p className={styles.text}>
-              All your profiles are hidden now. <br /> Indicate which sections you want to be public.
+              We will get in touch when we open up the rest of the profiling tool. <br />
+              All your profiles are hidden now. Indicate which sections you want to be public.
             </p>
 
             <br />
@@ -52,26 +62,31 @@ class UpdateForm extends Component {
                   }} />
                   <span style={{ verticalAlign: 'middle' }}>You have uploaded your Linkedin profile</span>
                 </p>
-                : <RaisedButton
-                  label={filename}
-                  labelPosition='before'
-                  style={{
-                    display: 'block',
-                    width: 248,
-                    margin: '0 auto',
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap'
-                  }}
-                  backgroundColor='#eee'
-                >
-                  <input name='profile' type='file' style={{
-                    cursor: 'pointer',
-                    position: 'absolute',
-                    top: 0, right: 0, bottom: 0, left: 0,
-                    width: '100%',
-                    opacity: 0
-                  }} onChange={this._handleUploadChange} />
-                </RaisedButton>
+                : <div>
+                  <div className={styles.guide}>
+                    <p><small>Get the PDF from your Linkedin page and upload here</small></p>
+                    <img src='/linkedin-save-pdf.png' />
+                  </div>
+                  <RaisedButton
+                    label={filename}
+                    labelPosition='before'
+                    style={{
+                      display: 'block',
+                      width: 260,
+                      margin: '0 auto',
+                      overflow: 'hidden',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    <input name='profile' type='file' style={{
+                      cursor: 'pointer',
+                      position: 'absolute',
+                      top: 0, right: 0, bottom: 0, left: 0,
+                      width: '100%',
+                      opacity: 0
+                    }} onChange={this._handleUploadChange} />
+                  </RaisedButton>
+                </div>
               }
 
               <br />
@@ -94,13 +109,18 @@ class UpdateForm extends Component {
                 label='Save your settings'
                 backgroundColor='#ff6f22'
                 labelColor='white'
+                style={{
+                  display: 'block',
+                  width: 260,
+                  margin: '0 auto'
+                }}
               />
             </form>
-          </Paper>
+          </div>
 
-          <p className={styles.footer}>
-            <small>Copyright &copy; 2016 hasBrain</small>
-          </p>
+          <div className={homeStyles.footer}>
+            Copyright &copy; 2016 hasBrain
+          </div>
         </div>
       </App>
     )

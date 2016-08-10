@@ -1,12 +1,13 @@
 .wrapper {
-  padding: 32px;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5;
 }
 
 .dialog {
   width: 100%;
   max-width: 560px;
   padding: 24px;
-  margin: 0 auto;
+  margin: 32px auto;
 }
 
 .logo {
@@ -29,6 +30,12 @@
   margin: 16px 0;
   font-weight: 400;
   color: #aaa;
+}
+
+.guide {
+  text-align: center;
+  p { margin-top: 0; }
+  img { margin-bottom: 1em; }
 }
 
 .footer {

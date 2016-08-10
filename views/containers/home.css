@@ -10,6 +10,7 @@ $primary-color: #ff6f22;
 
 .headerWrapper {
   height: 70px;
+  background: white;
 }
 
 .logo {

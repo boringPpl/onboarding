@@ -820,7 +820,8 @@ body {
     font-size: 18px; }
 
 .home__headerWrapper {
-  height: 70px; }
+  height: 70px;
+  background: white; }
 
 .home__logo {
   display: block;
@@ -887,13 +888,14 @@ body {
   padding: 24px 0;
   text-align: center; }
 .layout__wrapper {
-  padding: 32px; }
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5; }
 
 .layout__dialog {
   width: 100%;
   max-width: 560px;
   padding: 24px;
-  margin: 0 auto; }
+  margin: 32px auto; }
 
 .layout__logo {
   display: block;
@@ -912,6 +914,13 @@ body {
   margin: 16px 0;
   font-weight: 400;
   color: #aaa; }
+
+.layout__guide {
+  text-align: center; }
+  .layout__guide p {
+    margin-top: 0; }
+  .layout__guide img {
+    margin-bottom: 1em; }
 
 .layout__footer {
   color: gray;
