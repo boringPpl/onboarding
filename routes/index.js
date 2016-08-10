@@ -32,7 +32,7 @@ router.get('/login', (req, res, next) => {
 
 router.get('/logout', (req, res) => {
   req.logout()
-  res.redirect('/login')
+  res.redirect('/')
 })
 
 router.post('/login', passport.authenticate('local', {

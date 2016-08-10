@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { List, ListItem } from 'material-ui/List'
+import Dialog from 'material-ui/Dialog'
 import Toggle from 'material-ui/Toggle'
 import RaisedButton from 'material-ui/RaisedButton'
+import FlatButton from 'material-ui/FlatButton'
 import CheckIcon from 'material-ui/svg-icons/action/check-circle'
 import { lightGreen500 } from 'material-ui/styles/colors'
 import App from '../App'
@@ -11,7 +13,18 @@ import homeStyles from '../home.css'
 
 class UpdateForm extends Component {
   state = {
-    filename: 'Upload your Linkedin profile'
+    filename: 'Upload your Linkedin profile',
+    open: false
+  }
+
+  _handleOpen = () => {
+    this.setState({ open: true })
+  }
+
+  _handleClose = () => {
+    this.setState({ open: false }, () => {
+      this.form.submit()
+    })
   }
 
   _handleUploadChange = event => {
@@ -34,6 +47,9 @@ class UpdateForm extends Component {
                 <Col xs={12}>
                   <img className={homeStyles.logo} src='/logo.png' />
                   <div className={homeStyles.headerSlogan}>Work with the Best <br /> to be the Best of You.</div>
+                  <div className={homeStyles.headerSignup}>
+                    <a href='/logout'>Logout</a>
+                  </div>
                 </Col>
               </Row>
             </Grid>
@@ -42,14 +58,10 @@ class UpdateForm extends Component {
           <div zDepth={1} className={styles.dialog}>
             <img className={styles.logo} src='/logo-notext.png' />
             <h2 className={styles.heading}>Thank you for your sign up</h2>
-            <p className={styles.text}>
-              We will get in touch when we open up the rest of the profiling tool. <br />
-              All your profiles are hidden now. Indicate which sections you want to be public.
-            </p>
 
             <br />
 
-            <form action='/profiles/update' method='post' encType='multipart/form-data'>
+            <form action='/profiles/update' method='post' encType='multipart/form-data' ref={node => { this.form = node }}>
               <h4 className={styles.subheading}>Build Your Base Profile</h4>
               {
                 user.linkedinProfile
@@ -91,6 +103,12 @@ class UpdateForm extends Component {
 
               <br />
 
+              <p className={styles.text}>
+                All your profiles are hidden now. <br /> Indicate which sections you want to be public.
+              </p>
+
+              <br />
+
               <h4 className={styles.subheading}>Public Info</h4>
               <List style={{ paddingTop: 0, paddingBottom: 0 }}>
                 <ListItem primaryText='Github section of info' rightToggle={
@@ -105,8 +123,8 @@ class UpdateForm extends Component {
               <br />
 
               <RaisedButton
-                type='submit'
                 label='Save your settings'
+                onTouchTap={this._handleOpen}
                 backgroundColor='#ff6f22'
                 labelColor='white'
                 style={{
@@ -121,6 +139,25 @@ class UpdateForm extends Component {
           <div className={homeStyles.footer}>
             Copyright &copy; 2016 hasBrain
           </div>
+
+          <Dialog
+            actions={
+              <FlatButton
+                label='OK'
+                primary
+                keyboardFocused
+                onTouchTap={this._handleClose}
+              />
+            }
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this._handleClose}
+          >
+            We will get in touch when we open up the rest of the profiling tool. Contact us at <a style={{
+              textDecoration: 'none',
+              color: '#ff6f22'
+            }} href='mailto:info@hasbrain.com' target='_top'>info@hasbrain.com</a> for any questions.
+          </Dialog>
         </div>
       </App>
     )
