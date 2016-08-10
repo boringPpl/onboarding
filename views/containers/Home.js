@@ -22,11 +22,8 @@ class Home extends Component {
               <Row>
                 <Col xs={12}>
                   <img className={styles.logo} src='logo.png' />
-                  <div className={styles.headerSlogan}>Work with the Best <br /> to be the Best of You.</div>
                   <div className={styles.headerSignup}>
                     <a href='#features'>How does it work?</a>
-                    &nbsp;&nbsp;
-                    <a href='#signup'>Sign up</a>
                   </div>
                 </Col>
               </Row>
@@ -40,13 +37,14 @@ class Home extends Component {
                   <h1 className={styles.bannerHeading}>Profile yourself as a developer today.</h1>
                   <p>Find out about other similar skilled developers. <br /> Connect with them.</p>
                   <RaisedButton
-                    label='Sign up now'
-                    backgroundColor='#ff6f22'
+                    label='Continue with Github'
+                    backgroundColor='#333'
                     labelColor='white'
                     linkButton
-                    href='#signup'
-                    style={{ width: 192, height: 64 }}
-                    labelStyle={{ fontSize: 18 }}
+                    href='/auth/github'
+                    icon={<GithubIcon style={{ width: 24, height: 24 }} color='white' />}
+                    style={{ width: 288, height: 64 }}
+                    labelStyle={{ fontSize: 18, verticalAlign: 'middle' }}
                   />
                 </Col>
               </Row>
@@ -84,28 +82,6 @@ class Home extends Component {
                 </Col>
               </Row>
 
-            </Grid>
-          </div>
-
-          <div id='signup' className={styles.signupWrapper}>
-            <Grid>
-              <Row>
-                <Col xs={12}>
-                  <h1>Sign Up</h1>
-                  <p>Sign up today and be the first to get your profile! <br /> Ready to join the fun?</p>
-                  <br />
-                  <RaisedButton
-                    label='Login with Github'
-                    backgroundColor='#333'
-                    labelColor='white'
-                    linkButton
-                    href='/auth/github'
-                    icon={<GithubIcon style={{ width: 24, height: 24 }} color='white' />}
-                    style={{ width: 288, height: 64 }}
-                    labelStyle={{ fontSize: 18, verticalAlign: 'middle' }}
-                  />
-                </Col>
-              </Row>
             </Grid>
           </div>
 

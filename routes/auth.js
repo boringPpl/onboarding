@@ -86,16 +86,20 @@ passport.use(new GitHubStrategy({
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     let emails = await request.get({ url: `https://api.github.com/user/emails?access_token=${accessToken}`, headers: { 'user-agent': 'node.js' } })
+    let orgs = await request.get({ url: `https://api.github.com/user/orgs?access_token=${accessToken}`, headers: { 'user-agent': 'node.js' } })
     let primaryEmail = find(JSON.parse(emails), 'primary').email
     let user = await User.findOne({ email: primaryEmail }).exec()
+
     if (user) {
       user.githubId = profile.id
       user.githubProfile = profile
+      user.githubOrganizations = JSON.parse(orgs)
     } else {
       user = new User({
         email: primaryEmail,
         githubId: profile.id,
-        githubProfile: profile
+        githubProfile: profile,
+        githubOrganizations: JSON.parse(orgs)
       })
     }
     await user.save()

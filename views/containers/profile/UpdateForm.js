@@ -46,7 +46,6 @@ class UpdateForm extends Component {
               <Row>
                 <Col xs={12}>
                   <img className={homeStyles.logo} src='/logo.png' />
-                  <div className={homeStyles.headerSlogan}>Work with the Best <br /> to be the Best of You.</div>
                   <div className={homeStyles.headerSignup}>
                     <a href='/logout'>Logout</a>
                   </div>
@@ -56,8 +55,14 @@ class UpdateForm extends Component {
           </div>
 
           <div zDepth={1} className={styles.dialog}>
-            <img className={styles.logo} src='/logo-notext.png' />
-            <h2 className={styles.heading}>Thank you for your sign up</h2>
+            {
+              user.linkedinProfile
+              ? <h2 className={styles.heading}>Thank you for sign up!</h2>
+              : <h2 className={styles.heading}>Last step: Set up your basic profile with LinkedIn</h2>
+            }
+            <p className={styles.text}>
+              Don't worry, your profile is fully private until you make sections of it public.
+            </p>
 
             <br />
 
@@ -100,12 +105,6 @@ class UpdateForm extends Component {
                   </RaisedButton>
                 </div>
               }
-
-              <br />
-
-              <p className={styles.text}>
-                All your profiles are hidden now. <br /> Indicate which sections you want to be public.
-              </p>
 
               <br />
 
@@ -153,7 +152,7 @@ class UpdateForm extends Component {
             open={this.state.open}
             onRequestClose={this._handleClose}
           >
-            We will get in touch when we open up the rest of the profiling tool. Contact us at <a style={{
+            Thank you! You've been added to the closed alpha community. Your opinions matter greatly to us. Contact us at <a style={{
               textDecoration: 'none',
               color: '#ff6f22'
             }} href='mailto:info@hasbrain.com' target='_top'>info@hasbrain.com</a> for any questions.

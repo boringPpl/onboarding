@@ -10,6 +10,7 @@ const userSchema = mongoose.Schema({
   password: { type: String },
   githubId: { type: String },
   githubProfile: mongoose.Schema.Types.Mixed,
+  githubOrganizations: mongoose.Schema.Types.Mixed,
   linkedinProfile: { type: String },
   roles: {
     type: [{ type: String, enum: ['admin', 'contributor', 'teacher'] }],
