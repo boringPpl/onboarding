@@ -156,7 +156,7 @@ class UpdateForm extends Component {
             <p>Thank you! You've been added to the closed alpha community. Your opinions matter greatly to us.</p>
             <p>Interested in unlocking inner circle access?</p>
             <p dangerouslySetInnerHTML={{
-              __html: `Get early inner circle access by referring your friends. The more friends that join, the sooner you’ll get access. Just share this link: <a class="${styles.link}" href="${referralLink}" target="_blank">${referralLink}</a>`
+              __html: `Get early inner circle access by referring your friends. The more friends that join, the sooner you’ll get access. Just share this link: <span class="${styles.link}">${referralLink}</span>`
             }} />
             <p>
               Contact us at <a className={styles.link} href='mailto:info@hasbrain.com' target='_top'>info@hasbrain.com</a> for any questions.
