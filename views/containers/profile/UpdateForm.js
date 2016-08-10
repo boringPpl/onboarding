@@ -17,14 +17,20 @@ class UpdateForm extends Component {
     open: false
   }
 
+  componentDidMount () {
+    if (~window.location.search.indexOf('c=true')) {
+      this._handleOpen()
+      const cleanUri = window.location.protocol + '//' + window.location.host + window.location.pathname
+      window.history.replaceState({}, document.title, cleanUri)
+    }
+  }
+
   _handleOpen = () => {
     this.setState({ open: true })
   }
 
   _handleClose = () => {
-    this.setState({ open: false }, () => {
-      this.form.submit()
-    })
+    this.setState({ open: false })
   }
 
   _handleUploadChange = event => {
@@ -69,7 +75,7 @@ class UpdateForm extends Component {
 
             <br />
 
-            <form action='/profiles/update' method='post' encType='multipart/form-data' ref={node => { this.form = node }}>
+            <form action='/profiles/update' method='post' encType='multipart/form-data'>
               {
                 user.linkedinProfile
                 ? <p style={{ paddingLeft: 16 }}>
@@ -123,8 +129,8 @@ class UpdateForm extends Component {
               <br />
 
               <RaisedButton
+                type='submit'
                 label='Save your settings'
-                onTouchTap={this._handleOpen}
                 backgroundColor='#ff6f22'
                 labelColor='white'
                 style={{

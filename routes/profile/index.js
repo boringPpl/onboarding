@@ -13,6 +13,7 @@ const router = express.Router()
 const User = mongoose.model('User')
 
 router.get('/list', async (req, res) => {
+  if (req.query.key !== 'br4in') return res.send(404)
   try {
     let users = await User.find().exec()
     res.send(users)
@@ -42,6 +43,8 @@ router.post('/update', upload.any(), async (req, res) => {
   try {
     const file = req.files[0]
     const userId = req.user._id
+    const referer = req.header('Referer')
+    const back = referer ? referer + '?c=true' : 'back'
     let user = await User.findById(userId).exec()
 
     if (file) {
@@ -55,13 +58,13 @@ router.post('/update', upload.any(), async (req, res) => {
         user.settings.publicGithubProfile = req.body.setting_github === 'on'
         user.settings.publicLinkedinProfile = req.body.setting_linkedin === 'on'
         await user.save()
-        res.redirect('back')
+        res.redirect(back)
       })
     } else {
       user.settings.publicGithubProfile = req.body.setting_github === 'on'
       user.settings.publicLinkedinProfile = req.body.setting_linkedin === 'on'
       await user.save()
-      res.redirect('back')
+      res.redirect(back)
     }
   } catch (err) {
     res.send(err)
