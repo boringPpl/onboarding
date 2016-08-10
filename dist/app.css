@@ -925,3 +925,7 @@ body {
 .layout__footer {
   color: gray;
   text-align: center; }
+
+.layout__link {
+  text-decoration: none;
+  color: #ff6f22; }

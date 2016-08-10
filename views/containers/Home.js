@@ -14,6 +14,8 @@ const GithubIcon = props => (
 
 class Home extends Component {
   render () {
+    const githubLink = window && `/auth/github${window.location.search}`
+
     return (
       <App>
         <div className={styles.home}>
@@ -41,7 +43,7 @@ class Home extends Component {
                     backgroundColor='#333'
                     labelColor='white'
                     linkButton
-                    href='/auth/github'
+                    href={githubLink}
                     icon={<GithubIcon style={{ width: 24, height: 24 }} color='white' />}
                     style={{ width: 288, height: 64 }}
                     labelStyle={{ fontSize: 18, verticalAlign: 'middle' }}

@@ -82,8 +82,9 @@ passport.use(new BearerStrategy(
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.GITHUB_CALLBACK_URL
-}, async (accessToken, refreshToken, profile, done) => {
+  callbackURL: process.env.GITHUB_CALLBACK_URL,
+  passReqToCallback: true
+}, async (req, accessToken, refreshToken, profile, done) => {
   try {
     let emails = await request.get({ url: `https://api.github.com/user/emails?access_token=${accessToken}`, headers: { 'user-agent': 'node.js' } })
     let orgs = await request.get({ url: `https://api.github.com/user/orgs?access_token=${accessToken}`, headers: { 'user-agent': 'node.js' } })
@@ -94,12 +95,14 @@ passport.use(new GitHubStrategy({
       user.githubId = profile.id
       user.githubProfile = profile
       user.githubOrganizations = JSON.parse(orgs)
+      user.referredBy = req.query.r
     } else {
       user = new User({
         email: primaryEmail,
         githubId: profile.id,
         githubProfile: profile,
-        githubOrganizations: JSON.parse(orgs)
+        githubOrganizations: JSON.parse(orgs),
+        referredBy: req.query.r
       })
     }
     await user.save()

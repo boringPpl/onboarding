@@ -19,7 +19,8 @@ const userSchema = mongoose.Schema({
   settings: {
     publicGithubProfile: { type: Boolean, default: false },
     publicLinkedinProfile: { type: Boolean, default: false }
-  }
+  },
+  referredBy: { type: String }
 })
 
 userSchema.pre('save', function (next) {

@@ -37,6 +37,7 @@ class UpdateForm extends Component {
   render () {
     const { user } = this.props.data
     const { filename } = this.state
+    const referralLink = `http://hasbrain.com?r=${user._id}`
 
     return (
       <App>
@@ -69,7 +70,6 @@ class UpdateForm extends Component {
             <br />
 
             <form action='/profiles/update' method='post' encType='multipart/form-data' ref={node => { this.form = node }}>
-              <h4 className={styles.subheading}>Build Your Base Profile</h4>
               {
                 user.linkedinProfile
                 ? <p style={{ paddingLeft: 16 }}>
@@ -83,7 +83,6 @@ class UpdateForm extends Component {
                 </p>
                 : <div>
                   <div className={styles.guide}>
-                    <p><small>Get the PDF from your Linkedin page and upload here</small></p>
                     <img src='/linkedin-save-pdf.png' />
                   </div>
                   <RaisedButton
@@ -154,10 +153,14 @@ class UpdateForm extends Component {
             open={this.state.open}
             onRequestClose={this._handleClose}
           >
-            Thank you! You've been added to the closed alpha community. Your opinions matter greatly to us. Contact us at <a style={{
-              textDecoration: 'none',
-              color: '#ff6f22'
-            }} href='mailto:info@hasbrain.com' target='_top'>info@hasbrain.com</a> for any questions.
+            <p>Thank you! You've been added to the closed alpha community. Your opinions matter greatly to us.</p>
+            <p>Interested in unlocking inner circle access?</p>
+            <p dangerouslySetInnerHTML={{
+              __html: `Get early inner circle access by referring your friends. The more friends that join, the sooner you’ll get access. Just share this link: <a class="${styles.link}" href="${referralLink}">${referralLink}</a>`
+            }} />
+            <p>
+              Contact us at <a className={styles.link} href='mailto:info@hasbrain.com' target='_top'>info@hasbrain.com</a> for any questions.
+            </p>
           </Dialog>
         </div>
       </App>

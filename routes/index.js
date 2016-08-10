@@ -47,8 +47,14 @@ router.use('/admin', middlewares.ensureAuthorized)
 router.use('/profiles', middlewares.ensureAuthenticated)
 
 /* Github */
-router.get('/auth/github',
-  passport.authenticate('github', { scope: ['user:email', 'public_repo', 'read:org'] }))
+// router.get('/auth/github',
+//   passport.authenticate('github', { scope: ['user:email', 'public_repo', 'read:org'] }))
+router.get('/auth/github', (req, res) => {
+  const scope = 'user:email public_repo read:org'
+  const clientId = process.env.GITHUB_CLIENT_ID
+  const redirectUri = encodeURIComponent(`${process.env.GITHUB_CALLBACK_URL}?r=${req.query.r || ''}`)
+  res.redirect(`https://github.com/login/oauth/authorize?scope=${scope}&client_id=${clientId}&redirect_uri=${redirectUri}`)
+})
 
 router.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
