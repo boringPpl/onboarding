@@ -58,11 +58,13 @@ class UpdateForm extends Component {
             {
               user.linkedinProfile
               ? <h2 className={styles.heading}>Thank you for sign up!</h2>
-              : <h2 className={styles.heading}>Last step: Set up your basic profile with LinkedIn</h2>
+              : <div>
+                <h2 className={styles.heading}>Last step: Set up your basic profile with LinkedIn</h2>
+                <p className={styles.text}>
+                  Don't worry, your profile is fully private until you make sections of it public.
+                </p>
+              </div>
             }
-            <p className={styles.text}>
-              Don't worry, your profile is fully private until you make sections of it public.
-            </p>
 
             <br />
 

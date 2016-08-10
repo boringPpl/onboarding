@@ -57,9 +57,7 @@ class Home extends Component {
                 <Col xs={12}>
                   <h1 className={styles.featureHeading}>How does it work?</h1>
                   <p>
-                    We will email you when our alpha launch is ready. <br />
-                    Simply access the site and login with your Github/LinkedIn account. <br />
-                    All profiles on hasBrain are private unless you indicate sections you want to be public
+                    Login with your Github account and we will do the rest of profiling.
                   </p>
                 </Col>
               </Row>
