@@ -14,7 +14,7 @@ const GithubIcon = props => (
 
 class Home extends Component {
   render () {
-    const githubLink = window && `/auth/github${window.location.search}`
+    const githubLink = window ? `/auth/github${window.location.search}` : '/auth/github'
 
     return (
       <App>
