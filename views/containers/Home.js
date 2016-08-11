@@ -47,6 +47,8 @@ class Home extends Component {
                     icon={<GithubIcon style={{ width: 24, height: 24 }} color='white' />}
                     style={{ width: 288, height: 64 }}
                     labelStyle={{ fontSize: 18, verticalAlign: 'middle' }}
+                    disableTouchRipple
+                    disableFocusRipple
                   />
                 </Col>
               </Row>

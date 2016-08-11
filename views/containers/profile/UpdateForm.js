@@ -101,6 +101,8 @@ class UpdateForm extends Component {
                       overflow: 'hidden',
                       whiteSpace: 'nowrap'
                     }}
+                    disableTouchRipple
+                    disableFocusRipple
                   >
                     <input name='profile' type='file' style={{
                       cursor: 'pointer',
@@ -138,6 +140,8 @@ class UpdateForm extends Component {
                   width: 260,
                   margin: '0 auto'
                 }}
+                disableTouchRipple
+                disableFocusRipple
               />
             </form>
           </div>
