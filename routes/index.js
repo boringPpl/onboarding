@@ -62,4 +62,10 @@ router.get('/auth/github/callback',
     res.redirect(`/profiles/${req.user._id}/update`)
   })
 
+router.get('/forum/:thread_id', (req, res) => {
+  res.render('disqus', {
+    threadId: req.params.thread_id
+  })
+})
+
 export default router

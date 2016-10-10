@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title hasBrain
+
+  body
+    #disqus_thread
+    script.
+      var disqus_config = function () {
+          this.page.url = location.href;
+          this.page.identifier = !{threadId};
+      };
+      (function () {
+          var d = document, s = d.createElement('script');
+          s.src = '//hasbrain-com.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
