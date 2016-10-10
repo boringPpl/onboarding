@@ -10,10 +10,16 @@ html
       var disqus_config = function () {
           this.page.url = location.href;
           this.page.identifier = '!{threadId}';
+          this.callbacks.onNewComment = [handleNewComment];
       };
+      
       (function () {
           var d = document, s = d.createElement('script');
           s.src = '//hasbrain-com.disqus.com/embed.js';
           s.setAttribute('data-timestamp', +new Date());
           (d.head || d.body).appendChild(s);
       })();
+      
+      function handleNewComment (comment) {
+        parent.postMessage(comment, '*');
+      }
