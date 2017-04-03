@@ -8,6 +8,8 @@ import Login from '../views/containers/Login'
 import Home from '../views/containers/Home'
 import * as middlewares from './middlewares'
 
+import * as user from './api/user'
+
 const router = express.Router()
 
 router.get('/', (req, res, next) => {
@@ -40,6 +42,8 @@ router.post('/login', passport.authenticate('local', {
   failureRedirect: '/login',
   failureFlash: true
 }))
+
+router.post('/api/v1/create_user', passport.authenticate('basic', { session: false }), user.createUser)
 
 router.post('/oauth/token', oauth2.token)
 router.use('/api', passport.authenticate('bearer', { session: false }))

@@ -20,7 +20,10 @@ const userSchema = mongoose.Schema({
     publicGithubProfile: { type: Boolean, default: false },
     publicLinkedinProfile: { type: Boolean, default: false }
   },
-  referredBy: { type: String }
+  referredBy: { type: String },
+  rights: {
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
+  }
 })
 
 userSchema.pre('save', function (next) {
