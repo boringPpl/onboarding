@@ -887,6 +887,44 @@ body {
 .home__footer {
   padding: 24px 0;
   text-align: center; }
+.signup__signup {
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5;
+  background: white; }
+  .signup__signup p {
+    font-size: 18px; }
+
+.signup__headerWrapper {
+  height: 70px;
+  background: white; }
+
+.signup__logo {
+  display: block;
+  float: left;
+  height: 50px;
+  padding: 10px 0; }
+
+.signup__signupFormWrapper {
+  padding: 56px;
+  text-align: center; }
+
+.signup__signupFormHeading {
+  font-weight: 400;
+  color: #ff6f22; }
+
+.signup__small {
+  font-size: 16px !important;
+  color: grey; }
+
+.signup__signupWrapper {
+  padding: 56px 0 224px;
+  color: white;
+  text-align: center;
+  background: transparent url(/signup-bg.jpg) 50% 50%/cover no-repeat; }
+
+.signup__footer {
+  padding: 24px 0;
+  text-align: center; }
 .layout__wrapper {
   font-family: 'Lato', sans-serif;
   line-height: 1.5; }
