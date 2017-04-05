@@ -1,0 +1,53 @@
+$primary-color: #ff6f22;
+
+.signup {
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5;
+  background: white;
+
+  p { font-size: 18px; }
+}
+
+.headerWrapper {
+  height: 70px;
+  background: white;
+}
+
+.logo {
+  display: block;
+  float: left;
+  height: 50px;
+  padding: 10px 0;
+}
+
+.signupFormWrapper {
+  padding: 56px;
+  text-align: center;
+}
+
+.signupFormHeading {
+  font-weight: 400;
+  color: $primary-color;
+}
+
+.small {
+  font-size: 16px !important;
+  color: grey;
+}
+
+.signupWrapper {
+  padding: 56px 0 224px;
+  color: white;
+  text-align: center;
+  background:
+    transparent
+    url(/signup-bg.jpg)
+    50% 50%/cover
+    no-repeat;
+
+}
+
+.footer {
+  padding: 24px 0;
+  text-align: center;
+}

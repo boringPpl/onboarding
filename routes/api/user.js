@@ -1,6 +1,4 @@
 import mongoose from 'mongoose'
-import jwt from 'jsonwebtoken'
-
 const User = mongoose.model('User')
 
 export async function list (req, res, next) {
@@ -23,25 +21,32 @@ export async function create (req, res, next) {
 }
 
 export function createUser (req, res) {
-  let { email, rights = [], user_info = {} } = req.body // eslint-disable-line
-  if (!email) { return res.status(400).send({ error: 'Missing email' }) }
-  let newUser = new User({ email, rights, ...user_info }) // eslint-disable-line
+  if (!req.body.email || !req.body.password) {
+    return res.status(400).send({ error: 'Missing email or password' })
+  }
+  let userData = {
+    email: req.body.email,
+    password: req.body.password,
+    rights: req.body.rights || [],
+    user_info: req.body.user_info || {}
+  }
+  if (userData.user_info.firstname || userData.user_info.lastname) {
+    userData.name = {
+      first: userData.user_info.firstname,
+      last: userData.user_info.lastname
+    }
+    delete userData.user_info.firstname
+    delete userData.user_info.lastname
+  }
+  let newUser = new User(userData)
   newUser.save((err, user) => {
-    if (err) { return res.status(500).send(err) }
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_KEY)
-    return res.send({ token })
-  })
-}
-
-export function setPassword (req, res, next) {
-  let { password } = req.body
-  const user = req.user
-  if (!user) { return res.status(401).send('Unauthorized') }
-  if (!password) { return res.status(400).send({ error: 'Missing password' }) }
-  User.findById(user._id, (err, foundUser) => {
-    if (err) { return res.status(500).send(err) }
-    foundUser.password = password
-    foundUser.save()
-    return res.send({ msg: 'Set password successfully' })
+    if (err) {
+      let message = 'Sign up failed. Please try again later'
+      if (err.code && err.code === 11000) {
+        message = 'User already exists.'
+      }
+      return res.status(500).send({ error: message })
+    }
+    return res.send({ status: 'success' })
   })
 }

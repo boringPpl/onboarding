@@ -23,7 +23,8 @@ const userSchema = mongoose.Schema({
   referredBy: { type: String },
   rights: {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
-  }
+  },
+  user_info: mongoose.Schema.Types.Mixed
 })
 
 userSchema.pre('save', function (next) {

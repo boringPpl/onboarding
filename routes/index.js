@@ -6,6 +6,8 @@ import './auth'
 import oauth2 from './oauth2'
 import Login from '../views/containers/Login'
 import Home from '../views/containers/Home'
+import SignUp from '../views/containers/SignUp'
+import jwt from 'jsonwebtoken'
 import * as middlewares from './middlewares'
 
 import * as user from './api/user'
@@ -32,6 +34,24 @@ router.get('/login', (req, res, next) => {
   })
 })
 
+router.get('/signup', (req, res, next) => {
+  if (req.query.jwt) {
+    jwt.verify(req.query.jwt, process.env.PRD_JWT_KEY, function (err, decoded) {
+      if (err) return res.status(401).send('Invalid Token')
+      const initialData = {
+        error: req.flash('error'),
+        userInfo: decoded
+      }
+      res.render('index', {
+        html: ReactDOM.renderToString(<SignUp data={initialData} />),
+        data: JSON.stringify(initialData)
+      })
+    })
+  } else {
+    return res.status(400).send('Missing Token')
+  }
+})
+
 router.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
@@ -43,7 +63,7 @@ router.post('/login', passport.authenticate('local', {
   failureFlash: true
 }))
 
-router.post('/api/v1/create_user', passport.authenticate('basic', { session: false }), user.createUser)
+router.post('/api/v1/create_user', user.createUser)
 
 router.post('/oauth/token', oauth2.token)
 router.use('/api', passport.authenticate('bearer', { session: false }))
